@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// This widget listen for changes in the status of a [FormControl] specified
 /// in [formControlName] property and call [builder] function to rebuild widgets.
@@ -37,9 +37,7 @@ class ReactiveStatusListenableBuilder extends StatelessWidget {
     this.formControl,
     required this.builder,
     this.child,
-  })  : assert(
-            (formControlName != null && formControl == null) ||
-                (formControlName == null && formControl != null),
+  })  : assert((formControlName != null && formControl == null) || (formControlName == null && formControl != null),
             'Must provide a formControlName or a formControl, but not both at the same time.'),
         super(key: key);
 

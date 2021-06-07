@@ -5,7 +5,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// This is the base class for [FormGroup], [FormArray] and [FormControl].
 ///
@@ -21,8 +21,7 @@ abstract class AbstractControl<T> {
   final _valueChanges = StreamController<T?>.broadcast();
   final _touchChanges = StreamController<bool>.broadcast();
   final List<ValidatorFunction> _validators = <ValidatorFunction>[];
-  final List<AsyncValidatorFunction> _asyncValidators =
-      <AsyncValidatorFunction>[];
+  final List<AsyncValidatorFunction> _asyncValidators = <AsyncValidatorFunction>[];
 
   StreamSubscription<Map<String, dynamic>?>? _asyncValidationSubscription;
   Map<String, dynamic> _errors = <String, dynamic>{};
@@ -87,8 +86,7 @@ abstract class AbstractControl<T> {
   ///
   /// In [FormGroup] these come in handy when you want to perform validation
   /// that considers the value of more than one child control.
-  List<ValidatorFunction> get validators =>
-      List<ValidatorFunction>.unmodifiable(_validators);
+  List<ValidatorFunction> get validators => List<ValidatorFunction>.unmodifiable(_validators);
 
   /// Sets the synchronous [validators] that are active on this control. Calling
   /// this overwrites any existing sync validators.
@@ -135,8 +133,7 @@ abstract class AbstractControl<T> {
   ///
   /// In [FormGroup] these come in handy when you want to perform validation
   /// that considers the value of more than one child control.
-  List<AsyncValidatorFunction> get asyncValidators =>
-      List<AsyncValidatorFunction>.unmodifiable(_asyncValidators);
+  List<AsyncValidatorFunction> get asyncValidators => List<AsyncValidatorFunction>.unmodifiable(_asyncValidators);
 
   /// Sets the async [validators] that are active on this control. Calling this
   /// overwrites any existing async validators.
@@ -525,9 +522,7 @@ abstract class AbstractControl<T> {
     updateValue(value, updateParent: updateParent, emitEvent: emitEvent);
 
     if (disabled != null) {
-      disabled
-          ? markAsDisabled(updateParent: true, emitEvent: false)
-          : markAsEnabled(updateParent: true, emitEvent: false);
+      disabled ? markAsDisabled(updateParent: true, emitEvent: false) : markAsEnabled(updateParent: true, emitEvent: false);
     }
 
     if (removeFocus) {
@@ -608,8 +603,7 @@ abstract class AbstractControl<T> {
   }
 
   void _setInitialStatus() {
-    _status =
-        _allControlsDisabled() ? ControlStatus.disabled : ControlStatus.valid;
+    _status = _allControlsDisabled() ? ControlStatus.disabled : ControlStatus.valid;
   }
 
   void _updateAncestors(bool updateParent) {
@@ -672,8 +666,7 @@ abstract class AbstractControl<T> {
     _debounceTimer = Timer(
       Duration(milliseconds: _asyncValidatorsDebounceTime),
       () {
-        final validatorsStream = Stream.fromFutures(
-            asyncValidators.map((validator) => validator(this)).toList());
+        final validatorsStream = Stream.fromFutures(asyncValidators.map((validator) => validator(this)).toList());
 
         final errors = <String, dynamic>{};
         _asyncValidationSubscription = validatorsStream.listen(
@@ -986,8 +979,7 @@ class FormControl<T> extends AbstractControl<T> {
   }
 
   @override
-  void _forEachChild(void Function(AbstractControl<dynamic>) callback) =>
-      <AbstractControl<dynamic>>[];
+  void _forEachChild(void Function(AbstractControl<dynamic>) callback) => <AbstractControl<dynamic>>[];
 
   @override
   bool _anyControls(bool Function(AbstractControl<dynamic>) condition) => false;
@@ -1004,8 +996,7 @@ class FormControl<T> extends AbstractControl<T> {
 /// It calculates its status by reducing the status values of its children.
 /// For example, if one of the controls in a group is invalid, the entire group
 /// becomes invalid.
-class FormGroup extends AbstractControl<Map<String, Object?>>
-    with FormControlCollection<Object> {
+class FormGroup extends AbstractControl<Map<String, Object?>> with FormControlCollection<Object> {
   final Map<String, AbstractControl<dynamic>> _controls = {};
 
   /// Creates a new FormGroup instance.
@@ -1064,8 +1055,7 @@ class FormGroup extends AbstractControl<Map<String, Object?>>
   /// Gets the value of the [FormGroup], including any disabled controls.
   ///
   /// Retrieves all values regardless of disabled status.
-  Map<String, Object?> get rawValue => _controls
-      .map<String, Object?>((key, control) => MapEntry(key, control.value));
+  Map<String, Object?> get rawValue => _controls.map<String, Object?>((key, control) => MapEntry(key, control.value));
 
   @override
   bool contains(String name) {
@@ -1118,8 +1108,7 @@ class FormGroup extends AbstractControl<Map<String, Object?>>
   /// Gets the collection of child controls.
   ///
   /// The key for each child is the name under which it is registered.
-  Map<String, AbstractControl<Object?>> get controls =>
-      Map<String, AbstractControl<Object?>>.unmodifiable(_controls);
+  Map<String, AbstractControl<Object?>> get controls => Map<String, AbstractControl<Object?>>.unmodifiable(_controls);
 
   /// Reduce the value of the group is a key-value pair for each control
   /// in the group.
@@ -1407,8 +1396,7 @@ class FormGroup extends AbstractControl<Map<String, Object?>>
   /// print(form.value);  // output: {first: 'name', last: 'last name'}
   /// print(form.control('first').disabled);  // output: true
   /// ```
-  void resetState(Map<String, ControlState<Object>> state,
-      {bool removeFocus = false}) {
+  void resetState(Map<String, ControlState<Object>> state, {bool removeFocus = false}) {
     if (state.isEmpty) {
       reset(removeFocus: removeFocus);
     } else {
@@ -1469,13 +1457,11 @@ class FormGroup extends AbstractControl<Map<String, Object?>>
 
   @override
   bool _anyControls(bool Function(AbstractControl<dynamic>) condition) {
-    return _controls.values
-        .any((control) => control.enabled && condition(control));
+    return _controls.values.any((control) => control.enabled && condition(control));
   }
 
   @override
-  AbstractControl<dynamic>? _findControl(String path) =>
-      findControl(path.split('.'));
+  AbstractControl<dynamic>? _findControl(String path) => findControl(path.split('.'));
 }
 
 /// A FormArray aggregates the values of each child FormControl into an array.
@@ -1486,8 +1472,7 @@ class FormGroup extends AbstractControl<Map<String, Object?>>
 ///
 /// FormArray is one of the three fundamental building blocks used to define
 /// forms in Reactive Forms, along with [FormControl] and [FormGroup].
-class FormArray<T> extends AbstractControl<List<T?>>
-    with FormControlCollection<T> {
+class FormArray<T> extends AbstractControl<List<T?>> with FormControlCollection<T> {
   final List<AbstractControl<T>> _controls = [];
 
   /// Creates a new [FormArray] instance.
@@ -1545,14 +1530,12 @@ class FormArray<T> extends AbstractControl<List<T?>>
   }
 
   /// Gets the list of child controls.
-  List<AbstractControl<T>> get controls =>
-      List<AbstractControl<T>>.unmodifiable(_controls);
+  List<AbstractControl<T>> get controls => List<AbstractControl<T>>.unmodifiable(_controls);
 
   /// Gets the value of the [FormArray], including any disabled controls.
   ///
   /// Retrieves all values regardless of disabled status.
-  List<T?> get rawValue =>
-      _controls.map<T?>((control) => control.value).toList();
+  List<T?> get rawValue => _controls.map<T?>((control) => control.value).toList();
 
   /// Sets the value of the [FormArray].
   ///
@@ -1568,10 +1551,7 @@ class FormArray<T> extends AbstractControl<List<T?>>
   /// This method is for internal use only.
   @override
   List<T?>? _reduceValue() {
-    return _controls
-        .where((control) => control.enabled || disabled)
-        .map((control) => control.value)
-        .toList();
+    return _controls.where((control) => control.enabled || disabled).map((control) => control.value).toList();
   }
 
   /// Disables the control.
@@ -1959,13 +1939,8 @@ class FormArray<T> extends AbstractControl<List<T?>>
     }
 
     if (value != null && value.length > _controls.length) {
-      final newControls = value
-          .toList()
-          .asMap()
-          .entries
-          .where((entry) => entry.key >= _controls.length)
-          .map((entry) => FormControl<T>(value: entry.value))
-          .toList();
+      final newControls =
+          value.toList().asMap().entries.where((entry) => entry.key >= _controls.length).map((entry) => FormControl<T>(value: entry.value)).toList();
 
       addAll(
         newControls,
@@ -2131,8 +2106,7 @@ class FormArray<T> extends AbstractControl<List<T?>>
   }
 
   @override
-  void _forEachChild(void Function(AbstractControl<dynamic>) callback) =>
-      _controls.forEach(callback);
+  void _forEachChild(void Function(AbstractControl<dynamic>) callback) => _controls.forEach(callback);
 
   @override
   bool _anyControls(bool Function(AbstractControl<dynamic>) condition) {
@@ -2140,8 +2114,7 @@ class FormArray<T> extends AbstractControl<List<T?>>
   }
 
   @override
-  AbstractControl<dynamic>? _findControl(String path) =>
-      findControl(path.split('.'));
+  AbstractControl<dynamic>? _findControl(String path) => findControl(path.split('.'));
 }
 
 /// A FormArray aggregates the values of each child FormControl into an array.
@@ -2152,9 +2125,7 @@ class FormArray<T> extends AbstractControl<List<T?>>
 ///
 /// FormArray is one of the three fundamental building blocks used to define
 /// forms in Reactive Forms, along with [FormControl] and [FormGroup].
-class FormGroupArray<F extends FormGroup>
-    extends AbstractControl<List<Map<String, Object?>?>>
-    with FormControlCollection<Map<String, Object?>> {
+class FormGroupArray<F extends FormGroup> extends AbstractControl<List<Map<String, Object?>?>> with FormControlCollection<Map<String, Object?>> {
   final List<F> _controls = [];
 
   final F Function(Map<String, Object?>? value) subFormBuilder;
@@ -2220,8 +2191,7 @@ class FormGroupArray<F extends FormGroup>
   /// Gets the value of the [FormArray], including any disabled controls.
   ///
   /// Retrieves all values regardless of disabled status.
-  List<Map<String, Object?>?> get rawValue =>
-      _controls.map((control) => control.value).toList();
+  List<Map<String, Object?>?> get rawValue => _controls.map((control) => control.value).toList();
 
   /// Sets the value of the [FormArray].
   ///
@@ -2237,10 +2207,7 @@ class FormGroupArray<F extends FormGroup>
   /// This method is for internal use only.
   @override
   List<Map<String, Object?>?>? _reduceValue() {
-    return _controls
-        .where((control) => control.enabled || disabled)
-        .map((control) => control.value)
-        .toList();
+    return _controls.where((control) => control.enabled || disabled).map((control) => control.value).toList();
   }
 
   /// Disables the control.
@@ -2628,13 +2595,8 @@ class FormGroupArray<F extends FormGroup>
     }
 
     if (value != null && value.length > _controls.length) {
-      final newControls = value
-          .toList()
-          .asMap()
-          .entries
-          .where((entry) => entry.key >= _controls.length)
-          .map((entry) => subFormBuilder(entry.value))
-          .toList();
+      final newControls =
+          value.toList().asMap().entries.where((entry) => entry.key >= _controls.length).map((entry) => subFormBuilder(entry.value)).toList();
 
       addAll(
         newControls,
@@ -2800,8 +2762,7 @@ class FormGroupArray<F extends FormGroup>
   }
 
   @override
-  void _forEachChild(void Function(AbstractControl<dynamic>) callback) =>
-      _controls.forEach(callback);
+  void _forEachChild(void Function(AbstractControl<dynamic>) callback) => _controls.forEach(callback);
 
   @override
   bool _anyControls(bool Function(AbstractControl<dynamic>) condition) {
@@ -2809,6 +2770,5 @@ class FormGroupArray<F extends FormGroup>
   }
 
   @override
-  AbstractControl<dynamic>? _findControl(String path) =>
-      findControl(path.split('.'));
+  AbstractControl<dynamic>? _findControl(String path) => findControl(path.split('.'));
 }

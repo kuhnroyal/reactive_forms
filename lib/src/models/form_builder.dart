@@ -3,8 +3,8 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_forms/src/exceptions/form_builder_invalid_initialization_exception.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/src/exceptions/form_builder_invalid_initialization_exception.dart';
 
 /// Creates an [AbstractControl] from a user-specified configuration.
 class FormBuilder {
@@ -65,8 +65,7 @@ class FormBuilder {
     List<ValidatorFunction> validators = const [],
     List<AsyncValidatorFunction> asyncValidators = const [],
   ]) {
-    final map = controls
-        .map<String, AbstractControl<Object>>((String key, Object value) {
+    final map = controls.map<String, AbstractControl<Object>>((String key, Object value) {
       if (value is String) {
         return MapEntry(key, FormControl<String>(value: value));
       } else if (value is int) {
@@ -92,21 +91,15 @@ class FormBuilder {
           final defaultValue = value.first;
           final validators = List.of(value.skip(1));
 
-          if (validators.isNotEmpty &&
-              validators
-                  .any((validator) => !(validator is ValidatorFunction))) {
-            throw FormBuilderInvalidInitializationException(
-                'Invalid validators initialization');
+          if (validators.isNotEmpty && validators.any((validator) => !(validator is ValidatorFunction))) {
+            throw FormBuilderInvalidInitializationException('Invalid validators initialization');
           }
 
           if (defaultValue is ValidatorFunction) {
-            throw FormBuilderInvalidInitializationException(
-                'Expected first value in array to be default value of the control and not a validator.');
+            throw FormBuilderInvalidInitializationException('Expected first value in array to be default value of the control and not a validator.');
           }
 
-          final effectiveValidators = validators
-              .map<ValidatorFunction>((v) => v as ValidatorFunction)
-              .toList();
+          final effectiveValidators = validators.map<ValidatorFunction>((v) => v as ValidatorFunction).toList();
           final control = _control(defaultValue, effectiveValidators);
           return MapEntry(key, control as AbstractControl<Object>);
         }
@@ -222,11 +215,9 @@ class FormBuilder {
     );
   }
 
-  FormControl<dynamic> _control(
-      dynamic value, List<ValidatorFunction> validators) {
+  FormControl<dynamic> _control(dynamic value, List<ValidatorFunction> validators) {
     if (value is AbstractControl) {
-      throw FormBuilderInvalidInitializationException(
-          'Default value of control must not be an AbstractControl.');
+      throw FormBuilderInvalidInitializationException('Default value of control must not be an AbstractControl.');
     }
 
     if (value is String) {

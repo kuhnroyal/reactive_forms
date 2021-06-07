@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import 'reactive_status_listenable_builder_testing_widget.dart';
 
@@ -123,8 +123,7 @@ void main() {
       },
     );
 
-    Future<Map<String, dynamic>?> failedAsyncValidator(
-        AbstractControl<dynamic> control) async {
+    Future<Map<String, dynamic>?> failedAsyncValidator(AbstractControl<dynamic> control) async {
       return <String, dynamic>{'failed': true};
     }
 
@@ -157,8 +156,7 @@ void main() {
       },
     );
 
-    Future<Map<String, dynamic>?> asyncValidator(
-        AbstractControl<dynamic> control) async {
+    Future<Map<String, dynamic>?> asyncValidator(AbstractControl<dynamic> control) async {
       return Future.value(null);
     }
 

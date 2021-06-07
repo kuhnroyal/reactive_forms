@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_forms_example/sample_screen.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms_example/sample_screen.dart';
 
 class ArraySample extends StatefulWidget {
   @override
@@ -13,8 +13,7 @@ class _ArraySampleState extends State<ArraySample> {
     'selectedContacts': FormArray<bool>([], validators: [_emptyAddressee]),
   });
 
-  FormArray<bool> get selectedContacts =>
-      form.control('selectedContacts') as FormArray<bool>;
+  FormArray<bool> get selectedContacts => form.control('selectedContacts') as FormArray<bool>;
 
   @override
   void initState() {
@@ -44,19 +43,14 @@ class _ArraySampleState extends State<ArraySample> {
             children: [
               ReactiveFormArray<bool>(
                 formArrayName: 'selectedContacts',
-                builder: (context, formArray, child) => Column(
-                    children: contacts.map(_buildEmailListItem).toList()),
+                builder: (context, formArray, child) => Column(children: contacts.map(_buildEmailListItem).toList()),
               ),
               ReactiveFormConsumer(
                 builder: (context, form, child) {
                   return ElevatedButton(
                     onPressed: form.valid
                         ? () {
-                            final selectedEmails = contacts
-                                .asMap()
-                                .keys
-                                .where(selectedContacts.value.elementAt)
-                                .map(contacts.elementAt);
+                            final selectedEmails = contacts.asMap().keys.where(selectedContacts.value.elementAt).map(contacts.elementAt);
                             print('Sent emails to: $selectedEmails');
                           }
                         : null,
@@ -81,7 +75,5 @@ class _ArraySampleState extends State<ArraySample> {
 
 Map<String, Object> _emptyAddressee(AbstractControl<dynamic> control) {
   final emails = (control as FormArray<bool>).value;
-  return emails.any((isSelected) => isSelected)
-      ? null
-      : <String, dynamic>{'emptyAddressee': true};
+  return emails.any((isSelected) => isSelected) ? null : <String, dynamic>{'emptyAddressee': true};
 }

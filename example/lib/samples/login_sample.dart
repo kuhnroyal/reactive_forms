@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart' hide ProgressIndicator;
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_forms_example/sample_screen.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms_example/sample_screen.dart';
 
 class LoginSample extends StatelessWidget {
   FormGroup buildForm() => fb.group(<String, dynamic>{
@@ -24,8 +24,7 @@ class LoginSample extends StatelessWidget {
                 formControlName: 'email',
                 validationMessages: (control) => {
                   ValidationMessage.required: 'The email must not be empty',
-                  ValidationMessage.email:
-                      'The email value must be a valid email',
+                  ValidationMessage.email: 'The email value must be a valid email',
                   'unique': 'This email is already in use',
                 },
                 textInputAction: TextInputAction.next,
@@ -42,8 +41,7 @@ class LoginSample extends StatelessWidget {
                 obscureText: true,
                 validationMessages: (control) => {
                   ValidationMessage.required: 'The password must not be empty',
-                  ValidationMessage.minLength:
-                      'The password must be at least 8 characters',
+                  ValidationMessage.minLength: 'The password must be at least 8 characters',
                 },
                 textInputAction: TextInputAction.done,
                 decoration: const InputDecoration(
@@ -54,10 +52,7 @@ class LoginSample extends StatelessWidget {
                 ),
               ),
               Row(
-                children: [
-                  ReactiveCheckbox(formControlName: 'rememberMe'),
-                  const Text('Remember me')
-                ],
+                children: [ReactiveCheckbox(formControlName: 'rememberMe'), const Text('Remember me')],
               ),
               const SizedBox(height: 16.0),
               ElevatedButton(

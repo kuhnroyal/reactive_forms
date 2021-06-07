@@ -5,7 +5,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// Type of the function to be called when the control emits a value changes
 /// event.
@@ -43,8 +43,7 @@ abstract class ControlValueAccessor<ModelDataType, ViewDataType> {
   /// See also [registerControl].
   void updateModel(ViewDataType? viewValue) {
     if (_control == null) {
-      throw ValueAccessorException(
-          'No control registered. Call [ControlValueAccessor.registerControl] to register a control first.');
+      throw ValueAccessorException('No control registered. Call [ControlValueAccessor.registerControl] to register a control first.');
     }
 
     _viewToModelChange = true;
@@ -64,8 +63,7 @@ abstract class ControlValueAccessor<ModelDataType, ViewDataType> {
   ///
   /// The argument [onChange] is optionally and will be called every time the
   /// [control] emits the value change event.
-  void registerControl(FormControl<ModelDataType> control,
-      {ChangeFunction<ViewDataType>? onChange}) {
+  void registerControl(FormControl<ModelDataType> control, {ChangeFunction<ViewDataType>? onChange}) {
     _control = control;
     _onChangeSubscription = _control!.valueChanges.listen(_updateView);
 

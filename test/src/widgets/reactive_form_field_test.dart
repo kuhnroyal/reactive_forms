@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 void main() {
   group('ReactiveFormField Tests', () {
@@ -29,8 +29,7 @@ void main() {
           builder: (_) => Container(),
         );
 
-        expect(reactiveFormField,
-            isInstanceOf<ReactiveFormField<Object, Object>>());
+        expect(reactiveFormField, isInstanceOf<ReactiveFormField<Object, Object>>());
       },
     );
 
@@ -54,8 +53,7 @@ void main() {
 
 class _TestStringIntValueAccessor extends ControlValueAccessor<String, int> {
   @override
-  int? modelToViewValue(String? modelValue) =>
-      modelValue == null ? null : int.parse(modelValue);
+  int? modelToViewValue(String? modelValue) => modelValue == null ? null : int.parse(modelValue);
 
   @override
   String? viewToModelValue(int? viewValue) => viewValue?.toString();

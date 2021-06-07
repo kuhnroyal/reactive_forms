@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import 'reactive_text_field_testing_widget.dart';
 
@@ -15,8 +15,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
         // Expect: that the text field has no value when painted
         expect(find.text('John'), findsNothing);
@@ -39,8 +38,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
         // Expect: that the text field has no focus
         var textField = tester.firstWidget<TextField>(find.byType(TextField));
@@ -65,8 +63,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
         // And: the text field has focused
         var textField = tester.firstWidget<TextField>(find.byType(TextField));
@@ -93,8 +90,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
         // And: the text field has focused
         var textField = tester.firstWidget<TextField>(find.byType(TextField));
@@ -103,8 +99,7 @@ void main() {
         expect(textField.focusNode?.hasFocus, true);
 
         // Expect: errors are not visible yet
-        expect(textField.decoration?.errorText, null,
-            reason: 'errors are visible');
+        expect(textField.decoration?.errorText, null, reason: 'errors are visible');
 
         // When: call FormControl.unfocus()
         (form.control('name') as FormControl).unfocus();
@@ -125,8 +120,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
         // And: the text field has focused
         var textField = tester.firstWidget<TextField>(find.byType(TextField));
@@ -135,8 +129,7 @@ void main() {
         expect(textField.focusNode?.hasFocus, true);
 
         // Expect: errors are not visible yet
-        expect(textField.decoration?.errorText, null,
-            reason: 'errors are visible');
+        expect(textField.decoration?.errorText, null, reason: 'errors are visible');
 
         // When: call FormControl.unfocus(touched: false)
         form.control('name').unfocus(touched: false);
@@ -151,8 +144,7 @@ void main() {
     testWidgets(
       'Assertion Error if passing null as formControlName',
       (WidgetTester tester) async {
-        expect(() => ReactiveTextField<String>(formControlName: null),
-            throwsAssertionError);
+        expect(() => ReactiveTextField<String>(formControlName: null), throwsAssertionError);
       },
     );
 
@@ -165,22 +157,19 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
         // And: the field is invalid and untouched
         expect(form.control('name').hasErrors, true);
         expect(form.control('name').touched, false);
 
         // Expect: text field is not showing errors
-        final textField =
-            tester.firstWidget(find.byType(TextField)) as TextField;
+        final textField = tester.firstWidget(find.byType(TextField)) as TextField;
         expect(textField.decoration?.errorText, null);
       },
     );
 
-    testWidgets('Errors visible when FormControl touched',
-        (WidgetTester tester) async {
+    testWidgets('Errors visible when FormControl touched', (WidgetTester tester) async {
       // Given: A group with a required and touched field
       final form = FormGroup({
         'name': FormControl<String>(
@@ -190,8 +179,7 @@ void main() {
       });
 
       // And: a widget that is bind to the form
-      await tester
-          .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+      await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
       // Then: text field is showing errors
       final textField = tester.firstWidget(find.byType(TextField)) as TextField;
@@ -221,14 +209,12 @@ void main() {
         ));
 
         // Expect: text field is showing the custom message as error
-        final textField =
-            tester.firstWidget(find.byType(TextField)) as TextField;
+        final textField = tester.firstWidget(find.byType(TextField)) as TextField;
         expect(textField.decoration?.errorText, customMessage);
       },
     );
 
-    testWidgets('Errors visible when control change to touched and dirty',
-        (WidgetTester tester) async {
+    testWidgets('Errors visible when control change to touched and dirty', (WidgetTester tester) async {
       // Given: An invalid form
       final form = FormGroup({
         'name': FormControl<String>(
@@ -237,8 +223,7 @@ void main() {
       });
 
       // And: a widget that is bind to the form
-      await tester
-          .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+      await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
       // Expect: text field is not showing errors because is not touched
       var textField = tester.firstWidget<TextField>(find.byType(TextField));
@@ -265,8 +250,7 @@ void main() {
       await tester.pumpWidget(
         ReactiveTextFieldTestingWidget<String>(
           form: form,
-          showErrors: (control) =>
-              control.invalid && control.touched && control.dirty,
+          showErrors: (control) => control.invalid && control.touched && control.dirty,
         ),
       );
 
@@ -288,26 +272,22 @@ void main() {
       'FormControlParentNotFoundException when no parent widget',
       (WidgetTester tester) async {
         FlutterError.onError = (errorDetails) {
-          expect(errorDetails.exception,
-              isInstanceOf<FormControlParentNotFoundException>());
+          expect(errorDetails.exception, isInstanceOf<FormControlParentNotFoundException>());
         };
 
         // Expect: error when create text field without parent widget
-        await tester
-            .pumpWidget(ReactiveTextField<String>(formControlName: 'name'));
+        await tester.pumpWidget(ReactiveTextField<String>(formControlName: 'name'));
       },
     );
 
-    testWidgets('Control disabled by default disable Text field',
-        (WidgetTester tester) async {
+    testWidgets('Control disabled by default disable Text field', (WidgetTester tester) async {
       // Given: An form with disabled control
       final form = FormGroup({
         'name': FormControl<String>(disabled: true),
       });
 
       // And: a widget that is bind to the form
-      await tester
-          .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+      await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
       // Then: the text field is disabled
       final textField = tester.firstWidget<TextField>(find.byType(TextField));
@@ -323,8 +303,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
         // When: disable form
         form.markAsDisabled();
@@ -345,8 +324,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
         // When: enable form
         form.markAsEnabled();
@@ -367,8 +345,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
         // Expect: control isn't dirty
         expect(form.control('name').dirty, false);
@@ -377,8 +354,7 @@ void main() {
         await tester.enterText(find.byType(TextField), 'some value');
 
         // Then: the control is dirty
-        expect(form.control('name').dirty, true,
-            reason: 'control is not marked as dirty');
+        expect(form.control('name').dirty, true, reason: 'control is not marked as dirty');
       },
     );
 
@@ -398,8 +374,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<String>(form: form));
 
         // Expect: control isn't dirty
         expect(isControlDirty, false);
@@ -427,9 +402,7 @@ void main() {
         ));
 
         // When: get the state of the text field
-        final state = tester.allStates
-                .firstWhere((state) => state.widget is ReactiveTextField<int>)
-            as ReactiveFormFieldState<int, String>;
+        final state = tester.allStates.firstWhere((state) => state.widget is ReactiveTextField<int>) as ReactiveFormFieldState<int, String>;
 
         // Then: the value accessor is IntValueAccessor
         expect(state.valueAccessor, isInstanceOf<IntValueAccessor>());
@@ -451,9 +424,7 @@ void main() {
         ));
 
         // When: get the state of the text field
-        final state = tester.allStates.firstWhere(
-                (state) => state.widget is ReactiveTextField<double>)
-            as ReactiveFormFieldState<double, String>;
+        final state = tester.allStates.firstWhere((state) => state.widget is ReactiveTextField<double>) as ReactiveFormFieldState<double, String>;
 
         // Then: the value accessor is DoubleValueAccessor
         expect(state.valueAccessor, isInstanceOf<DoubleValueAccessor>());
@@ -475,9 +446,7 @@ void main() {
         ));
 
         // When: get the state of the text field
-        final state = tester.allStates.firstWhere(
-                (state) => state.widget is ReactiveTextField<DateTime>)
-            as ReactiveFormFieldState<DateTime, String>;
+        final state = tester.allStates.firstWhere((state) => state.widget is ReactiveTextField<DateTime>) as ReactiveFormFieldState<DateTime, String>;
 
         // Then: the value accessor is DateTimeValueAccessor
         expect(state.valueAccessor, isInstanceOf<DateTimeValueAccessor>());
@@ -499,9 +468,8 @@ void main() {
         ));
 
         // When: get the state of the text field
-        final state = tester.allStates.firstWhere(
-                (state) => state.widget is ReactiveTextField<TimeOfDay>)
-            as ReactiveFormFieldState<TimeOfDay, String>;
+        final state =
+            tester.allStates.firstWhere((state) => state.widget is ReactiveTextField<TimeOfDay>) as ReactiveFormFieldState<TimeOfDay, String>;
 
         // Then: the value accessor is TimeOfDayValueAccessor
         expect(state.valueAccessor, isInstanceOf<TimeOfDayValueAccessor>());
@@ -564,8 +532,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<dynamic>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<dynamic>(form: form));
 
         // When: set a value to field 'name'
         final value = 'John';
@@ -587,8 +554,7 @@ void main() {
         });
 
         // And: a widget that is bind to the form
-        await tester
-            .pumpWidget(ReactiveTextFieldTestingWidget<dynamic>(form: form));
+        await tester.pumpWidget(ReactiveTextFieldTestingWidget<dynamic>(form: form));
 
         // When: set a value to field 'name'
         final value = 35;

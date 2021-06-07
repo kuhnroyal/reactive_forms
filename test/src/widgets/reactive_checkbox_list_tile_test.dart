@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import 'reactive_checkbox_list_tile_testing_widget.dart';
 
@@ -15,8 +15,7 @@ void main() {
         });
 
         // And: a checkbox is bind to boolean control
-        await tester
-            .pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
+        await tester.pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
 
         // Expect: the checkbox is not checked
         final checkbox = tester.firstWidget(find.byType(Checkbox)) as Checkbox;
@@ -53,8 +52,7 @@ void main() {
         });
 
         // And: a checkbox is bind to boolean control
-        await tester
-            .pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
+        await tester.pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
 
         // Expect: the checkbox is checked
         final checkbox = tester.firstWidget(find.byType(Checkbox)) as Checkbox;
@@ -71,8 +69,7 @@ void main() {
         });
 
         // And: a checkbox is bind to boolean control
-        await tester
-            .pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
+        await tester.pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
 
         // Expect: the checkbox is not checked
         final checkbox = tester.firstWidget(find.byType(Checkbox)) as Checkbox;
@@ -89,8 +86,7 @@ void main() {
         });
 
         // And: a checkbox is bind to boolean control
-        await tester
-            .pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
+        await tester.pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
 
         // Expect: the checkbox is not checked
         var checkbox = tester.firstWidget(find.byType(Checkbox)) as Checkbox;
@@ -115,8 +111,7 @@ void main() {
         });
 
         // And: a checkbox is bind to boolean control
-        await tester
-            .pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
+        await tester.pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
 
         // Expect: the checkbox is checked
         var checkbox = tester.firstWidget(find.byType(Checkbox)) as Checkbox;
@@ -141,8 +136,7 @@ void main() {
         });
 
         // When: a checkbox is bind to the form
-        await tester
-            .pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
+        await tester.pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
 
         // Then: the checkbox is disabled
         final checkbox = tester.firstWidget(find.byType(Checkbox)) as Checkbox;
@@ -159,8 +153,7 @@ void main() {
         });
 
         // And: a checkbox is bind to the form
-        await tester
-            .pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
+        await tester.pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
 
         // When: disable form
         form.markAsDisabled();
@@ -181,8 +174,7 @@ void main() {
         });
 
         // And: a checkbox is bind to the form
-        await tester
-            .pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
+        await tester.pumpWidget(ReactiveCheckboxListTileTestingWidget(form: form));
 
         // When: enable form
         form.markAsEnabled();

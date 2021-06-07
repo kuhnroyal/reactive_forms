@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// A widget whose content stays synced with a [ValueListenable].
 ///
@@ -43,9 +43,7 @@ class ReactiveValueListenableBuilder<T> extends StatelessWidget {
     this.formControlName,
     this.formControl,
     this.child,
-  })  : assert(
-            (formControlName != null && formControl == null) ||
-                (formControlName == null && formControl != null),
+  })  : assert((formControlName != null && formControl == null) || (formControlName == null && formControl != null),
             'Must provide a formControlName or a formControl, but not both at the same time.'),
         super(key: key);
 

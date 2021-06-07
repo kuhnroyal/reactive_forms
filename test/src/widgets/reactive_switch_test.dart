@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import 'reactive_switch_testing_widget.dart';
 
@@ -18,10 +18,7 @@ void main() {
         await tester.pumpWidget(ReactiveSwitchTestingWidget(form: form));
 
         // When: gets switch value
-        final switches = tester
-            .widgetList(find.byType(Switch))
-            .map((widget) => widget as Switch)
-            .toList();
+        final switches = tester.widgetList(find.byType(Switch)).map((widget) => widget as Switch).toList();
 
         // Then: value equals to false
         for (final switchWidget in switches) {
@@ -42,10 +39,7 @@ void main() {
         await tester.pumpWidget(ReactiveSwitchTestingWidget(form: form));
 
         // When: gets switch value
-        final switches = tester
-            .widgetList(find.byType(Switch))
-            .map((widget) => widget as Switch)
-            .toList();
+        final switches = tester.widgetList(find.byType(Switch)).map((widget) => widget as Switch).toList();
 
         // Then: value equals to control value
         for (final switchWidget in switches) {
@@ -66,10 +60,7 @@ void main() {
         await tester.pumpWidget(ReactiveSwitchTestingWidget(form: form));
 
         // When: gets switch value
-        final switches = tester
-            .widgetList(find.byType(Switch))
-            .map((widget) => widget as Switch)
-            .toList();
+        final switches = tester.widgetList(find.byType(Switch)).map((widget) => widget as Switch).toList();
 
         // Then: value equals to false
         for (final switchWidget in switches) {
@@ -94,10 +85,7 @@ void main() {
         await tester.pump();
 
         // Then: value equals to true
-        final switches = tester
-            .widgetList(find.byType(Switch))
-            .map((widget) => widget as Switch)
-            .toList();
+        final switches = tester.widgetList(find.byType(Switch)).map((widget) => widget as Switch).toList();
 
         for (final switchWidget in switches) {
           expect(switchWidget.value, true);
@@ -121,10 +109,7 @@ void main() {
         await tester.pump();
 
         // Then: value equals to false
-        final switches = tester
-            .widgetList(find.byType(Switch))
-            .map((widget) => widget as Switch)
-            .toList();
+        final switches = tester.widgetList(find.byType(Switch)).map((widget) => widget as Switch).toList();
 
         for (final switchWidget in switches) {
           expect(switchWidget.value, false);
@@ -144,10 +129,7 @@ void main() {
         await tester.pumpWidget(ReactiveSwitchTestingWidget(form: form));
 
         // Then: the switch is disabled
-        final switches = tester
-            .widgetList(find.byType(Switch))
-            .map((widget) => widget as Switch)
-            .toList();
+        final switches = tester.widgetList(find.byType(Switch)).map((widget) => widget as Switch).toList();
 
         for (final switchWidget in switches) {
           expect(switchWidget.onChanged, null);
@@ -171,10 +153,7 @@ void main() {
         await tester.pump();
 
         // Then: the switch is disabled
-        final switches = tester
-            .widgetList(find.byType(Switch))
-            .map((widget) => widget as Switch)
-            .toList();
+        final switches = tester.widgetList(find.byType(Switch)).map((widget) => widget as Switch).toList();
 
         for (final switchWidget in switches) {
           expect(switchWidget.onChanged, null);
@@ -198,10 +177,7 @@ void main() {
         await tester.pump();
 
         // Then: the switch is disabled
-        final switches = tester
-            .widgetList(find.byType(Switch))
-            .map((widget) => widget as Switch)
-            .toList();
+        final switches = tester.widgetList(find.byType(Switch)).map((widget) => widget as Switch).toList();
 
         for (final switchWidget in switches) {
           expect(switchWidget.onChanged != null, true);

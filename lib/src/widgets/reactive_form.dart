@@ -4,7 +4,7 @@
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import '../widgets/form_control_inherited_notifier.dart';
 
@@ -46,19 +46,13 @@ class ReactiveForm extends StatefulWidget {
   ///
   /// `listen: false` is necessary if want to avoid rebuilding the
   /// [context] when model changes:
-  static AbstractControl<Object>? of(BuildContext context,
-      {bool listen = true}) {
+  static AbstractControl<Object>? of(BuildContext context, {bool listen = true}) {
     if (listen) {
-      return context
-          .dependOnInheritedWidgetOfExactType<FormControlInheritedStreamer>()
-          ?.control;
+      return context.dependOnInheritedWidgetOfExactType<FormControlInheritedStreamer>()?.control;
     }
 
-    final element = context.getElementForInheritedWidgetOfExactType<
-        FormControlInheritedStreamer>();
-    return element == null
-        ? null
-        : (element.widget as FormControlInheritedStreamer).control;
+    final element = context.getElementForInheritedWidgetOfExactType<FormControlInheritedStreamer>();
+    return element == null ? null : (element.widget as FormControlInheritedStreamer).control;
   }
 
   @override

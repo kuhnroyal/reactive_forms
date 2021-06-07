@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import '../widgets/form_control_inherited_notifier.dart';
 
@@ -11,8 +11,7 @@ import '../widgets/form_control_inherited_notifier.dart';
 /// This is the signature of a function that receives the [context],
 /// the [formArray] and an optional [child] and returns a [Widget].
 ///
-typedef ReactiveFormArrayBuilder<T> = Widget Function(
-    BuildContext context, FormArray<T> formArray, Widget? child);
+typedef ReactiveFormArrayBuilder<T> = Widget Function(BuildContext context, FormArray<T> formArray, Widget? child);
 
 /// This class is responsible for create a [FormControlInheritedStreamer] for
 /// exposing a [FormArray] to all descendants widgets.
@@ -38,9 +37,7 @@ class ReactiveFormArray<T> extends StatefulWidget {
     this.formArrayName,
     this.formArray,
     this.child,
-  })  : assert(
-            (formArrayName != null && formArray == null) ||
-                (formArrayName == null && formArray != null),
+  })  : assert((formArrayName != null && formArray == null) || (formArrayName == null && formArray != null),
             'Must provide a formArrayName or a formArray, but not both at the same time.'),
         super(key: key);
 
@@ -56,8 +53,7 @@ class _ReactiveFormArrayState<T> extends State<ReactiveFormArray<T>> {
     if (widget.formArray != null) {
       _formArray = widget.formArray!;
     } else {
-      final form =
-          ReactiveForm.of(context, listen: false) as FormControlCollection;
+      final form = ReactiveForm.of(context, listen: false) as FormControlCollection;
       _formArray = form.control(widget.formArrayName!) as FormArray<T>;
     }
     super.didChangeDependencies();

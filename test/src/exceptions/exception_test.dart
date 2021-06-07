@@ -1,21 +1,18 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import '../widgets/reactive_text_field_testing_widget.dart';
 
 void main() {
   group('Exceptions tests', () {
-    test('FormControlNotFoundException message references the control index',
-        () {
+    test('FormControlNotFoundException message references the control index', () {
       final e = FormControlNotFoundException(controlName: '0');
       expect(e.toString().contains('control with name: \'0\' not found'), true);
     });
 
-    test('FormArrayInvalidIndexException message references the invalid index ',
-        () {
+    test('FormArrayInvalidIndexException message references the invalid index ', () {
       final e = FormArrayInvalidIndexException('control');
-      expect(e.toString().contains('Index \'control\' is not a valid index'),
-          true);
+      expect(e.toString().contains('Index \'control\' is not a valid index'), true);
     });
 
     test('FormControlNotFoundException when not control in array', () {
@@ -26,8 +23,7 @@ void main() {
       final removeControl = () => array.remove(FormControl());
 
       // Then: exception is thrown
-      expect(
-          removeControl, throwsA(isInstanceOf<FormControlNotFoundException>()));
+      expect(removeControl, throwsA(isInstanceOf<FormControlNotFoundException>()));
     });
 
     test('FormControlNotFoundException message when no name specified', () {
@@ -39,13 +35,11 @@ void main() {
     });
 
     test('FormBuilderInvalidInitializationException message', () {
-      expect(FormBuilderInvalidInitializationException('message').toString(),
-          'FormBuilderInvalidInitializationException: message');
+      expect(FormBuilderInvalidInitializationException('message').toString(), 'FormBuilderInvalidInitializationException: message');
     });
 
     test('ValueAccessorException message', () {
-      expect(ValueAccessorException('message').toString(),
-          'ValueAccessorException: message');
+      expect(ValueAccessorException('message').toString(), 'ValueAccessorException: message');
     });
 
     testWidgets(
@@ -63,8 +57,7 @@ void main() {
         ));
 
         // Then: initial date is equals to last Date
-        expect(tester.takeException(),
-            isInstanceOf<BindingCastException<String, String>>());
+        expect(tester.takeException(), isInstanceOf<BindingCastException<String, String>>());
       },
     );
   });

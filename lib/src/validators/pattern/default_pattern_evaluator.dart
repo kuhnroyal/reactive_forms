@@ -1,4 +1,4 @@
-import 'package:reactive_forms/src/validators/pattern/pattern_evaluator.dart';
+import 'package:sk_reactive_forms/src/validators/pattern/pattern_evaluator.dart';
 
 /// Evaluates a pattern using a native [Pattern] instance.
 class DefaultPatternEvaluator implements PatternEvaluator {

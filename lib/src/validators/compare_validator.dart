@@ -2,7 +2,7 @@
 // Use of this source code is governed by the MIT license that can be
 // found in the LICENSE file.
 
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// Represents a [FormGroup] validator that compares two controls in the group.
 class CompareValidator<T> extends Validator<dynamic> {
@@ -41,8 +41,7 @@ class CompareValidator<T> extends Validator<dynamic> {
       return error;
     }
 
-    if (_meetsComparison(
-        mainControl.value as Comparable<T>, compareControl.value as T)) {
+    if (_meetsComparison(mainControl.value as Comparable<T>, compareControl.value as T)) {
       mainControl.removeError(ValidationMessage.compare);
     } else {
       mainControl.setErrors(error);

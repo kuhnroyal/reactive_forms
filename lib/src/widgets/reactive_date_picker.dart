@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// A builder that builds a widget responsible to decide when to show
 /// the picker dialog.
@@ -13,8 +13,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 /// that is bound to [ReactiveTimePicker].
 ///
 /// See also [ReactiveDatePickerDelegate].
-typedef ReactiveDatePickerBuilder<T> = Widget Function(
-    BuildContext context, ReactiveDatePickerDelegate<T> picker, Widget? child);
+typedef ReactiveDatePickerBuilder<T> = Widget Function(BuildContext context, ReactiveDatePickerDelegate<T> picker, Widget? child);
 
 /// This is a convenience widget that wraps the function
 /// [showDatePicker] in a [ReactiveDatePicker].
@@ -127,13 +126,11 @@ class ReactiveDatePicker<T> extends ReactiveFormField<T, DateTime> {
   }
 
   @override
-  ReactiveFormFieldState<T, DateTime> createState() =>
-      _ReactiveDatePickerState<T>();
+  ReactiveFormFieldState<T, DateTime> createState() => _ReactiveDatePickerState<T>();
 }
 
 /// Definition of the function responsible for show the date picker.
-typedef _ShowDatePickerCallback<T> = void Function(
-    ReactiveFormFieldState<T?, DateTime> field);
+typedef _ShowDatePickerCallback<T> = void Function(ReactiveFormFieldState<T?, DateTime> field);
 
 /// This class is responsible of showing the picker dialog.
 ///
@@ -160,8 +157,7 @@ class _ReactiveDatePickerState<T> extends ReactiveFormFieldState<T, DateTime> {
   @override
   ControlValueAccessor<T, DateTime> selectValueAccessor() {
     if (control is FormControl<String>) {
-      return Iso8601DateTimeValueAccessor()
-          as ControlValueAccessor<T, DateTime>;
+      return Iso8601DateTimeValueAccessor() as ControlValueAccessor<T, DateTime>;
     } else if (control is FormControl<DateTime>) {
       return super.selectValueAccessor();
     }

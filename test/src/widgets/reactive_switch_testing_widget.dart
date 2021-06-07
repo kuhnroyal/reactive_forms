@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_forms/src/widgets/reactive_switch.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/src/widgets/reactive_switch.dart';
 
 class ReactiveSwitchTestingWidget extends StatelessWidget {
   final FormGroup form;

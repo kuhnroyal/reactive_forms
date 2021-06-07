@@ -1,4 +1,4 @@
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// Represents the [AnyValidator] test function definition.
 typedef AnyValidatorFunctionTest<T> = bool Function(T value);
@@ -20,12 +20,9 @@ class AnyValidator<T> extends Validator<dynamic> {
     }
 
     // TODO: change the assert for an exception
-    assert(control.value is Iterable<T>,
-        '${control.value.runtimeType.toString()} $T?');
+    assert(control.value is Iterable<T>, '${control.value.runtimeType.toString()} $T?');
 
     final iterable = control.value as Iterable<T>;
-    return iterable.any(test)
-        ? null
-        : <String, dynamic>{ValidationMessage.any: true};
+    return iterable.any(test) ? null : <String, dynamic>{ValidationMessage.any: true};
   }
 }

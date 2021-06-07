@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// A reactive widget that wraps a [DropdownButton].
 class ReactiveDropdownField<T> extends ReactiveFormField<T, T> {
@@ -63,20 +63,17 @@ class ReactiveDropdownField<T> extends ReactiveFormField<T, T> {
             );
 
             var effectiveValue = field.value;
-            if (effectiveValue != null &&
-                !items.any((item) => item.value == effectiveValue)) {
+            if (effectiveValue != null && !items.any((item) => item.value == effectiveValue)) {
               effectiveValue = null;
             }
 
             final isDisabled = readOnly || field.control.disabled;
             var effectiveDisabledHint = disabledHint;
             if (isDisabled && disabledHint == null) {
-              final selectedItemIndex =
-                  items.indexWhere((item) => item.value == effectiveValue);
+              final selectedItemIndex = items.indexWhere((item) => item.value == effectiveValue);
               if (selectedItemIndex > -1) {
                 effectiveDisabledHint = selectedItemBuilder != null
-                    ? selectedItemBuilder(field.context)
-                        .elementAt(selectedItemIndex)
+                    ? selectedItemBuilder(field.context).elementAt(selectedItemIndex)
                     : items.elementAt(selectedItemIndex).child;
               }
             }
@@ -93,9 +90,7 @@ class ReactiveDropdownField<T> extends ReactiveFormField<T, T> {
                   items: items,
                   selectedItemBuilder: selectedItemBuilder,
                   hint: hint,
-                  onChanged: isDisabled
-                      ? null
-                      : (T? value) => state._onChanged(value, onChanged),
+                  onChanged: isDisabled ? null : (T? value) => state._onChanged(value, onChanged),
                   onTap: onTap,
                   disabledHint: effectiveDisabledHint,
                   elevation: elevation,
@@ -118,8 +113,7 @@ class ReactiveDropdownField<T> extends ReactiveFormField<T, T> {
         );
 
   @override
-  ReactiveFormFieldState<T, T> createState() =>
-      _ReactiveDropdownFieldState<T>();
+  ReactiveFormFieldState<T, T> createState() => _ReactiveDropdownFieldState<T>();
 }
 
 class _ReactiveDropdownFieldState<T> extends ReactiveFormFieldState<T, T> {

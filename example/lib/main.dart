@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:reactive_forms_example/samples/add_dynamic_controls_sample.dart';
-import 'package:reactive_forms_example/samples/array_sample.dart';
-import 'package:reactive_forms_example/samples/complex_sample.dart';
-import 'package:reactive_forms_example/samples/date_picker_sample.dart';
-import 'package:reactive_forms_example/samples/disable_form_sample.dart';
-import 'package:reactive_forms_example/samples/login_sample.dart';
-import 'package:reactive_forms_example/samples/simple_sample.dart';
+import 'package:sk_reactive_forms_example/samples/add_dynamic_controls_sample.dart';
+import 'package:sk_reactive_forms_example/samples/array_sample.dart';
+import 'package:sk_reactive_forms_example/samples/complex_sample.dart';
+import 'package:sk_reactive_forms_example/samples/date_picker_sample.dart';
+import 'package:sk_reactive_forms_example/samples/disable_form_sample.dart';
+import 'package:sk_reactive_forms_example/samples/login_sample.dart';
+import 'package:sk_reactive_forms_example/samples/simple_sample.dart';
 
 // TODO: update advance reactive widgets library to use latest version of Reactive Forms
 //import 'samples/reactive_form_widgets_sample.dart';

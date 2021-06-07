@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import 'reactive_date_picker_testing_widget.dart';
 
@@ -17,16 +17,14 @@ void main() {
         });
 
         // And: a widget bound to the form
-        await tester
-            .pumpWidget(ReactiveDatePickerTestingWidget<DateTime>(form: form));
+        await tester.pumpWidget(ReactiveDatePickerTestingWidget<DateTime>(form: form));
 
         // When: open picker
         await tester.tap(find.byType(TextButton));
         await tester.pump();
 
         // And: get initial date of the date picker
-        final datePicker = tester.widget(find.byType(CalendarDatePicker))
-            as CalendarDatePicker;
+        final datePicker = tester.widget(find.byType(CalendarDatePicker)) as CalendarDatePicker;
         final initialDate = datePicker.initialDate;
 
         // Then: initial date id the default value of the control
@@ -46,8 +44,7 @@ void main() {
         });
 
         // And: a widget bound to the form
-        await tester
-            .pumpWidget(ReactiveDatePickerTestingWidget<DateTime>(form: form));
+        await tester.pumpWidget(ReactiveDatePickerTestingWidget<DateTime>(form: form));
 
         // When: open picker
         await tester.tap(find.byType(TextButton));
@@ -82,8 +79,7 @@ void main() {
         await tester.pump();
 
         // And: get initial date of the date picker
-        final datePicker = tester.widget(find.byType(CalendarDatePicker))
-            as CalendarDatePicker;
+        final datePicker = tester.widget(find.byType(CalendarDatePicker)) as CalendarDatePicker;
         final initialDate = datePicker.initialDate;
 
         // Then: initial date is equals to last Date
@@ -100,17 +96,13 @@ void main() {
         });
 
         // And: a widget bound to the form
-        await tester
-            .pumpWidget(ReactiveDatePickerTestingWidget<DateTime>(form: form));
+        await tester.pumpWidget(ReactiveDatePickerTestingWidget<DateTime>(form: form));
 
         // And: get initial date of the date picker
-        final datePickerState = tester.allStates
-                .firstWhere((state) => state.widget is ReactiveDatePicker)
-            as ReactiveFormFieldState;
+        final datePickerState = tester.allStates.firstWhere((state) => state.widget is ReactiveDatePicker) as ReactiveFormFieldState;
 
         // Then: initial date is equals to last Date
-        expect(datePickerState.valueAccessor,
-            isInstanceOf<DefaultValueAccessor<DateTime, DateTime>>());
+        expect(datePickerState.valueAccessor, isInstanceOf<DefaultValueAccessor<DateTime, DateTime>>());
       },
     );
 
@@ -123,17 +115,13 @@ void main() {
         });
 
         // And: a widget bound to the form
-        await tester
-            .pumpWidget(ReactiveDatePickerTestingWidget<String>(form: form));
+        await tester.pumpWidget(ReactiveDatePickerTestingWidget<String>(form: form));
 
         // And: get initial date of the date picker
-        final datePickerState = tester.allStates
-                .firstWhere((state) => state.widget is ReactiveDatePicker)
-            as ReactiveFormFieldState;
+        final datePickerState = tester.allStates.firstWhere((state) => state.widget is ReactiveDatePicker) as ReactiveFormFieldState;
 
         // Then: initial date is equals to last Date
-        expect(datePickerState.valueAccessor,
-            isInstanceOf<Iso8601DateTimeValueAccessor>());
+        expect(datePickerState.valueAccessor, isInstanceOf<Iso8601DateTimeValueAccessor>());
       },
     );
 
@@ -146,8 +134,7 @@ void main() {
         });
 
         // And: a widget bound to the form
-        await tester
-            .pumpWidget(ReactiveDatePickerTestingWidget<bool>(form: form));
+        await tester.pumpWidget(ReactiveDatePickerTestingWidget<bool>(form: form));
 
         // Then: initial date is equals to last Date
         expect(tester.takeException(), isInstanceOf<ValueAccessorException>());

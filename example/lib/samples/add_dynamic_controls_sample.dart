@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_forms_example/sample_screen.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms_example/sample_screen.dart';
 
 class ViewModelProvider extends InheritedWidget {
   final NewContactViewModel viewModel;
@@ -10,8 +10,7 @@ class ViewModelProvider extends InheritedWidget {
     @required Widget child,
   }) : super(child: child);
 
-  static NewContactViewModel of(BuildContext context) =>
-      context.findAncestorWidgetOfExactType<ViewModelProvider>()?.viewModel;
+  static NewContactViewModel of(BuildContext context) => context.findAncestorWidgetOfExactType<ViewModelProvider>()?.viewModel;
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) => true;

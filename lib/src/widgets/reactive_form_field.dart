@@ -5,24 +5,22 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_forms/src/exceptions/binding_cast_exception.dart';
-import 'package:reactive_forms/src/value_accessors/control_value_accessor.dart';
-import 'package:reactive_forms/src/value_accessors/default_value_accessor.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/src/exceptions/binding_cast_exception.dart';
+import 'package:sk_reactive_forms/src/value_accessors/control_value_accessor.dart';
+import 'package:sk_reactive_forms/src/value_accessors/default_value_accessor.dart';
 
 /// Signature for building the widget representing the form field.
 ///
 /// Used by [FormField.builder].
-typedef ReactiveFormFieldBuilder<T, K> = Widget Function(
-    ReactiveFormFieldState<T, K> field);
+typedef ReactiveFormFieldBuilder<T, K> = Widget Function(ReactiveFormFieldState<T, K> field);
 
 /// Signature for customize when to show errors in a widget.
 typedef ShowErrorsFunction = bool Function(AbstractControl<dynamic> control);
 
 /// Signature of the function that returns the [Map] that store custom
 /// validation messages for each error.
-typedef ValidationMessagesFunction<T> = Map<String, String> Function(
-    FormControl<T> control);
+typedef ValidationMessagesFunction<T> = Map<String, String> Function(FormControl<T> control);
 
 /// A single reactive form field.
 ///
@@ -66,21 +64,17 @@ class ReactiveFormField<ModelDataType, ViewDataType> extends StatefulWidget {
     this.showErrors,
     this.validationMessages,
     required ReactiveFormFieldBuilder<ModelDataType, ViewDataType> builder,
-  })   : assert(
-            (formControlName != null && formControl == null) ||
-                (formControlName == null && formControl != null),
+  })   : assert((formControlName != null && formControl == null) || (formControlName == null && formControl != null),
             'Must provide a formControlName or a formControl, but not both at the same time.'),
         _builder = builder,
         super(key: key);
 
   @override
-  ReactiveFormFieldState<ModelDataType, ViewDataType> createState() =>
-      ReactiveFormFieldState<ModelDataType, ViewDataType>();
+  ReactiveFormFieldState<ModelDataType, ViewDataType> createState() => ReactiveFormFieldState<ModelDataType, ViewDataType>();
 }
 
 /// Represents the state of the [ReactiveFormField] stateful widget.
-class ReactiveFormFieldState<ModelDataType, ViewDataType>
-    extends State<ReactiveFormField<ModelDataType, ViewDataType>> {
+class ReactiveFormFieldState<ModelDataType, ViewDataType> extends State<ReactiveFormField<ModelDataType, ViewDataType>> {
   /// The [FormControl] that is bound to this state.
   late FormControl<ModelDataType> control;
   late StreamSubscription<ControlStatus> _statusChangesSubscription;
@@ -94,8 +88,7 @@ class ReactiveFormFieldState<ModelDataType, ViewDataType>
   bool get touched => control.touched;
 
   /// Gets the widget control value accessor
-  ControlValueAccessor<ModelDataType, ViewDataType> get valueAccessor =>
-      _valueAccessor;
+  ControlValueAccessor<ModelDataType, ViewDataType> get valueAccessor => _valueAccessor;
 
   /// Gets the error text calculated from validators of the control.
   ///
@@ -104,9 +97,7 @@ class ReactiveFormFieldState<ModelDataType, ViewDataType>
   String? get errorText {
     if (_showErrors()) {
       final validationMessages = _getValidationMessages(control);
-      return validationMessages.containsKey(control.errors.keys.first)
-          ? validationMessages[control.errors.keys.first]
-          : control.errors.keys.first;
+      return validationMessages.containsKey(control.errors.keys.first) ? validationMessages[control.errors.keys.first] : control.errors.keys.first;
     }
 
     return null;
@@ -121,9 +112,7 @@ class ReactiveFormFieldState<ModelDataType, ViewDataType>
   }
 
   Map<String, String> _getValidationMessages(FormControl<dynamic> control) {
-    return widget.validationMessages != null
-        ? widget.validationMessages!(this.control)
-        : <String, String>{};
+    return widget.validationMessages != null ? widget.validationMessages!(this.control) : <String, String>{};
   }
 
   @override
@@ -148,8 +137,7 @@ class ReactiveFormFieldState<ModelDataType, ViewDataType>
   }
 
   @override
-  void didUpdateWidget(
-      ReactiveFormField<ModelDataType, ViewDataType> oldWidget) {
+  void didUpdateWidget(ReactiveFormField<ModelDataType, ViewDataType> oldWidget) {
     if (widget.valueAccessor != null && widget.valueAccessor != valueAccessor) {
       valueAccessor.dispose();
       _valueAccessor = widget.valueAccessor!;
@@ -181,10 +169,8 @@ class ReactiveFormFieldState<ModelDataType, ViewDataType>
   @protected
   @mustCallSuper
   void subscribeControl() {
-    _statusChangesSubscription =
-        control.statusChanged.listen(_onControlStatusChanged);
-    _touchChangesSubscription =
-        control.touchChanges.listen(_onControlTouchChanged);
+    _statusChangesSubscription = control.statusChanged.listen(_onControlStatusChanged);
+    _touchChangesSubscription = control.touchChanges.listen(_onControlTouchChanged);
     _subscribeValueAccessor();
   }
 

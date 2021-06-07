@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import 'reactive_form_consumer_testing_widget.dart';
 
@@ -21,8 +21,7 @@ void main() {
         await tester.pumpWidget(ReactiveFormConsumerTestingWidget(form: form));
 
         // Expect: submit button is enabled
-        final submitButton =
-            tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+        final submitButton = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
         expect(submitButton.enabled, true);
       },
     );
@@ -41,8 +40,7 @@ void main() {
         await tester.pumpWidget(ReactiveFormConsumerTestingWidget(form: form));
 
         // Expect: submit button is disabled
-        final submitButton =
-            tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+        final submitButton = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
         expect(submitButton.enabled, false);
       },
     );
@@ -66,8 +64,7 @@ void main() {
         await tester.pump();
 
         // Expect: submit button is disabled
-        final submitButton =
-            tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+        final submitButton = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
         expect(submitButton.enabled, false);
       },
     );
@@ -90,8 +87,7 @@ void main() {
         await tester.pump();
 
         // Expect: submit button is disabled
-        final submitButton =
-            tester.widget<ElevatedButton>(find.byType(ElevatedButton));
+        final submitButton = tester.widget<ElevatedButton>(find.byType(ElevatedButton));
         expect(submitButton.enabled, true);
       },
     );

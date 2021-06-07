@@ -8,10 +8,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_forms/src/value_accessors/control_value_accessor.dart';
-import 'package:reactive_forms/src/value_accessors/double_value_accessor.dart';
-import 'package:reactive_forms/src/value_accessors/int_value_accessor.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/src/value_accessors/control_value_accessor.dart';
+import 'package:sk_reactive_forms/src/value_accessors/double_value_accessor.dart';
+import 'package:sk_reactive_forms/src/value_accessors/int_value_accessor.dart';
 
 /// A [ReactiveTextField] that contains a [TextField].
 ///
@@ -146,16 +146,14 @@ class ReactiveTextField<T> extends ReactiveFormField<T, String> {
           showErrors: showErrors,
           builder: (ReactiveFormFieldState<T, String> field) {
             final state = field as _ReactiveTextFieldState<T>;
-            final effectiveDecoration = decoration
-                .applyDefaults(Theme.of(state.context).inputDecorationTheme);
+            final effectiveDecoration = decoration.applyDefaults(Theme.of(state.context).inputDecorationTheme);
 
             state._setFocusNode(focusNode);
 
             return TextField(
               controller: state._textController,
               focusNode: state.focusNode,
-              decoration:
-                  effectiveDecoration.copyWith(errorText: state.errorText),
+              decoration: effectiveDecoration.copyWith(errorText: state.errorText),
               keyboardType: keyboardType,
               textInputAction: textInputAction,
               style: style,
@@ -170,14 +168,8 @@ class ReactiveTextField<T> extends ReactiveFormField<T, String> {
               showCursor: showCursor,
               obscureText: obscureText,
               autocorrect: autocorrect,
-              smartDashesType: smartDashesType ??
-                  (obscureText
-                      ? SmartDashesType.disabled
-                      : SmartDashesType.enabled),
-              smartQuotesType: smartQuotesType ??
-                  (obscureText
-                      ? SmartQuotesType.disabled
-                      : SmartQuotesType.enabled),
+              smartDashesType: smartDashesType ?? (obscureText ? SmartDashesType.disabled : SmartDashesType.enabled),
+              smartQuotesType: smartQuotesType ?? (obscureText ? SmartQuotesType.disabled : SmartQuotesType.enabled),
               enableSuggestions: enableSuggestions,
               maxLengthEnforcement: maxLengthEnforcement,
               maxLines: maxLines,
@@ -213,8 +205,7 @@ class ReactiveTextField<T> extends ReactiveFormField<T, String> {
         );
 
   @override
-  ReactiveFormFieldState<T, String> createState() =>
-      _ReactiveTextFieldState<T>();
+  ReactiveFormFieldState<T, String> createState() => _ReactiveTextFieldState<T>();
 }
 
 class _ReactiveTextFieldState<T> extends ReactiveFormFieldState<T, String> {
@@ -229,8 +220,7 @@ class _ReactiveTextFieldState<T> extends ReactiveFormFieldState<T, String> {
     super.initState();
 
     final initialValue = value;
-    _textController = TextEditingController(
-        text: initialValue == null ? '' : initialValue.toString());
+    _textController = TextEditingController(text: initialValue == null ? '' : initialValue.toString());
   }
 
   @override

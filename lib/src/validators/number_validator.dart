@@ -2,7 +2,7 @@
 // Use of this source code is governed by the MIT license that can be
 // found in the LICENSE file.
 
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// Validator that validates if control's value is a numeric value.
 class NumberValidator extends Validator<dynamic> {
@@ -11,9 +11,6 @@ class NumberValidator extends Validator<dynamic> {
 
   @override
   Map<String, dynamic>? validate(AbstractControl<dynamic> control) {
-    return (control.value == null) ||
-            !numberRegex.hasMatch(control.value.toString())
-        ? <String, dynamic>{ValidationMessage.number: true}
-        : null;
+    return (control.value == null) || !numberRegex.hasMatch(control.value.toString()) ? <String, dynamic>{ValidationMessage.number: true} : null;
   }
 }

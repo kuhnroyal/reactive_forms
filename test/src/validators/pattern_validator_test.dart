@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import 'pattern/mock_pattern.dart';
 
@@ -48,9 +48,7 @@ void main() {
       const americanExpressPattern = r'^3[47][0-9]{13}$';
 
       final cardNumber = FormControl<String>(
-        validators: [
-          Validators.pattern(MockPattern(RegExp(americanExpressPattern)))
-        ],
+        validators: [Validators.pattern(MockPattern(RegExp(americanExpressPattern)))],
       );
 
       cardNumber.value = '342654321654213';
@@ -88,11 +86,9 @@ void main() {
       // Then: password contains all pattern errors
       expect(password.valid, false, reason: 'password is valid');
       expect(password.hasError(containsLettersValidationMessage), true,
-          reason:
-              'password does not contains the containsLettersValidationMessage error');
+          reason: 'password does not contains the containsLettersValidationMessage error');
       expect(password.hasError(containsNumbersValidationMessage), true,
-          reason:
-              'password does not contains the containsNumbersValidationMessage error');
+          reason: 'password does not contains the containsNumbersValidationMessage error');
     });
 
     test('Customize Validation Message with one valid pattern', () {
@@ -123,11 +119,8 @@ void main() {
       // Then: password contains all pattern errors
       expect(password.valid, false, reason: 'password is valid');
       expect(password.hasError(containsLettersValidationMessage), true,
-          reason:
-              'password does not contains the containsLettersValidationMessage error');
-      expect(password.hasError(containsNumbersValidationMessage), false,
-          reason:
-              'password contains the containsNumbersValidationMessage error');
+          reason: 'password does not contains the containsLettersValidationMessage error');
+      expect(password.hasError(containsNumbersValidationMessage), false, reason: 'password contains the containsNumbersValidationMessage error');
     });
 
     test('Customize Validation Message with all valid pattern', () {
@@ -157,12 +150,8 @@ void main() {
 
       // Then: password is valid without errors
       expect(password.valid, true, reason: 'password is valid');
-      expect(password.hasError(containsLettersValidationMessage), false,
-          reason:
-              'password contains the containsLettersValidationMessage error');
-      expect(password.hasError(containsNumbersValidationMessage), false,
-          reason:
-              'password contains the containsNumbersValidationMessage error');
+      expect(password.hasError(containsLettersValidationMessage), false, reason: 'password contains the containsLettersValidationMessage error');
+      expect(password.hasError(containsNumbersValidationMessage), false, reason: 'password contains the containsNumbersValidationMessage error');
     });
   });
 }

@@ -1,4 +1,4 @@
-name: reactive_forms_example
+name: sk_reactive_forms_example
 description: A Reactive Forms example app
 
 # The following line prevents the package from being accidentally published to
@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  reactive_forms:
+  sk_reactive_forms:
     path: ../
   #reactive_forms_widgets: ^0.3.1
 
@@ -39,7 +39,7 @@ dev_dependencies:
 
 dependency_overrides:
   intl: ^0.17.0
-  reactive_forms:
+  sk_reactive_forms:
     path: ../
 
 # For information on the generic Dart part of this file, see the

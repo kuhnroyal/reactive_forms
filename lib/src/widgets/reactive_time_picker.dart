@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// A builder that builds a widget responsible to decide when to show
 /// the picker dialog.
@@ -13,8 +13,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 /// that is bound to [ReactiveTimePicker].
 ///
 /// See also [ReactiveTimePickerDelegate].
-typedef ReactiveTimePickerBuilder = Widget Function(
-    BuildContext context, ReactiveTimePickerDelegate picker, Widget? child);
+typedef ReactiveTimePickerBuilder = Widget Function(BuildContext context, ReactiveTimePickerDelegate picker, Widget? child);
 
 /// This is a convenience widget that wraps the function
 /// [showTimePicker] in a [ReactiveTimePicker].
@@ -95,13 +94,11 @@ class ReactiveTimePicker extends ReactiveFormField<TimeOfDay, TimeOfDay> {
         );
 
   @override
-  ReactiveFormFieldState<TimeOfDay, TimeOfDay> createState() =>
-      ReactiveFormFieldState<TimeOfDay, TimeOfDay>();
+  ReactiveFormFieldState<TimeOfDay, TimeOfDay> createState() => ReactiveFormFieldState<TimeOfDay, TimeOfDay>();
 }
 
 /// Definition of the function responsible for show the time picker.
-typedef _ShowTimePickerCallback = void Function(
-    ReactiveFormFieldState<TimeOfDay, TimeOfDay> field);
+typedef _ShowTimePickerCallback = void Function(ReactiveFormFieldState<TimeOfDay, TimeOfDay> field);
 
 /// This class is responsible of showing the picker dialog.
 ///

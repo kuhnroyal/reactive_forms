@@ -2,7 +2,7 @@
 // Use of this source code is governed by the MIT license that can be
 // found in the LICENSE file.
 
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// Validator that requires the control's value pass an email validation test.
 class EmailValidator extends Validator<dynamic> {
@@ -12,9 +12,7 @@ class EmailValidator extends Validator<dynamic> {
   @override
   Map<String, dynamic>? validate(AbstractControl<dynamic> control) {
     // don't validate empty values to allow optional controls
-    return (control.isNull ||
-            control.value.toString().isEmpty ||
-            emailRegex.hasMatch(control.value.toString()))
+    return (control.isNull || control.value.toString().isEmpty || emailRegex.hasMatch(control.value.toString()))
         ? null
         : <String, dynamic>{ValidationMessage.email: control.value};
   }

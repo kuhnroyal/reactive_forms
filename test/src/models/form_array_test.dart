@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 void main() {
   group('FormArray tests', () {
@@ -15,9 +15,7 @@ void main() {
       final form = FormGroup({
         'selectedEmails': FormArray<bool>(
           [], // an empty array of controls
-          validators: [
-            _emptyAddressee
-          ], // validates that at least one email is selected
+          validators: [_emptyAddressee], // validates that at least one email is selected
         ),
       });
 
@@ -49,9 +47,7 @@ void main() {
       final form = FormGroup({
         'selectedEmails': FormArray<bool>(
           [], // an empty array of controls
-          validators: [
-            _emptyAddressee
-          ], // validates that at least one email is selected
+          validators: [_emptyAddressee], // validates that at least one email is selected
         ),
       });
 
@@ -74,8 +70,7 @@ void main() {
     test('Throws FormArrayInvalidIndexException if index not a valid int', () {
       final array = FormArray([]);
 
-      expect(() => array.control('control'),
-          throwsA(isInstanceOf<FormArrayInvalidIndexException>()));
+      expect(() => array.control('control'), throwsA(isInstanceOf<FormArrayInvalidIndexException>()));
     });
 
     test('Add values to array sets value to each item', () {
@@ -98,8 +93,7 @@ void main() {
     test('Throws FormControlNotFoundException if invalid control index', () {
       final array = FormArray([]);
 
-      expect(() => array.control('0'),
-          throwsA(isInstanceOf<FormControlNotFoundException>()));
+      expect(() => array.control('0'), throwsA(isInstanceOf<FormControlNotFoundException>()));
     });
 
     test('Reset array restores default value of all items to null', () {
@@ -510,8 +504,7 @@ void main() {
     array.focus('0');
 
     // Then: control is focused
-    expect((array.control('0') as FormControl).hasFocus, true,
-        reason: 'control is not focused');
+    expect((array.control('0') as FormControl).hasFocus, true, reason: 'control is not focused');
   });
 
   test('Focused a nested control', () {
@@ -545,10 +538,8 @@ void main() {
     array.unfocus();
 
     // Then: any control has focus
-    expect((array.control('0') as FormControl).hasFocus, false,
-        reason: 'control is focused');
-    expect((array.control('1') as FormControl).hasFocus, false,
-        reason: 'control is focused');
+    expect((array.control('0') as FormControl).hasFocus, false, reason: 'control is focused');
+    expect((array.control('1') as FormControl).hasFocus, false, reason: 'control is focused');
   });
 
   test('Clear Array', () {
@@ -611,7 +602,5 @@ void main() {
 
 Map<String, Object>? _emptyAddressee(AbstractControl<dynamic> control) {
   final emails = (control as FormArray<bool>).value;
-  return emails?.any((isSelected) => isSelected!) == true
-      ? null
-      : {'emptyAddressee': true};
+  return emails?.any((isSelected) => isSelected!) == true ? null : {'emptyAddressee': true};
 }

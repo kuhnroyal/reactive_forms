@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 void main() {
   group('Form Control', () {
@@ -43,10 +43,8 @@ void main() {
       );
 
       expect(formControl.errors.keys.length, 2);
-      expect(formControl.errors.containsKey(ValidationMessage.email), true,
-          reason: 'mail');
-      expect(formControl.errors[ValidationMessage.minLength] != null, true,
-          reason: 'minLength');
+      expect(formControl.errors.containsKey(ValidationMessage.email), true, reason: 'mail');
+      expect(formControl.errors[ValidationMessage.minLength] != null, true, reason: 'minLength');
     });
 
     test('FormControl.errors contains all matching errors', () {
@@ -89,8 +87,7 @@ void main() {
     });
 
     test('Assert error if debounce time < 0', () {
-      final formControl =
-          () => FormControl<dynamic>(asyncValidatorsDebounceTime: -1);
+      final formControl = () => FormControl<dynamic>(asyncValidatorsDebounceTime: -1);
       expect(formControl, throwsAssertionError);
     });
 
@@ -240,8 +237,7 @@ void main() {
       final control = FormControl<String>();
 
       // When: set errors and specify markAsDirty = false
-      control
-          .setErrors(<String, dynamic>{'someError': true}, markAsDirty: false);
+      control.setErrors(<String, dynamic>{'someError': true}, markAsDirty: false);
 
       // Then: the control is pristine
       expect(control.pristine, true);
@@ -365,8 +361,7 @@ void main() {
       expect(formControl.asyncValidators.isEmpty, true);
 
       // When: setting new async validators
-      final asyncValidator =
-          (AbstractControl<dynamic> control) => Future.value(null);
+      final asyncValidator = (AbstractControl<dynamic> control) => Future.value(null);
       formControl.setAsyncValidators([asyncValidator]);
 
       // Then: a new async validator is added

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide ProgressIndicator;
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_forms_example/progress_indicator.dart';
-import 'package:reactive_forms_example/sample_screen.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms_example/progress_indicator.dart';
+import 'package:sk_reactive_forms_example/sample_screen.dart';
 
 class ComplexSample extends StatelessWidget {
   FormGroup buildForm() => fb.group(<String, dynamic>{
@@ -32,8 +32,7 @@ class ComplexSample extends StatelessWidget {
                 formControlName: 'email',
                 validationMessages: (control) => {
                   ValidationMessage.required: 'The email must not be empty',
-                  ValidationMessage.email:
-                      'The email value must be a valid email',
+                  ValidationMessage.email: 'The email value must be a valid email',
                   'unique': 'This email is already in use',
                 },
                 onSubmitted: () => form.focus('password'),
@@ -55,8 +54,7 @@ class ComplexSample extends StatelessWidget {
                 obscureText: true,
                 validationMessages: (control) => {
                   ValidationMessage.required: 'The password must not be empty',
-                  ValidationMessage.minLength:
-                      'The password must be at least 8 characters',
+                  ValidationMessage.minLength: 'The password must be at least 8 characters',
                 },
                 onSubmitted: () => form.focus('passwordConfirmation'),
                 textInputAction: TextInputAction.next,
@@ -65,12 +63,10 @@ class ComplexSample extends StatelessWidget {
               const SizedBox(height: 24.0),
               ReactiveTextField<String>(
                 formControlName: 'passwordConfirmation',
-                decoration:
-                    const InputDecoration(labelText: 'Confirm Password'),
+                decoration: const InputDecoration(labelText: 'Confirm Password'),
                 obscureText: true,
                 validationMessages: (control) => {
-                  ValidationMessage.mustMatch:
-                      'Password confirmation must match',
+                  ValidationMessage.mustMatch: 'Password confirmation must match',
                 },
                 onSubmitted: () => form.focus('rememberMe'),
                 textInputAction: TextInputAction.next,
@@ -84,8 +80,7 @@ class ComplexSample extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () => form.resetState({
-                  'email':
-                      ControlState<String>(value: 'johnDoe', disabled: true),
+                  'email': ControlState<String>(value: 'johnDoe', disabled: true),
                   'progress': ControlState<double>(value: 50.0),
                   'rememberMe': ControlState<bool>(value: false),
                 }, removeFocus: true),
@@ -121,9 +116,8 @@ class ComplexSample extends StatelessWidget {
               const SizedBox(height: 24.0),
               ReactiveValueListenableBuilder<double>(
                 formControlName: 'progress',
-                builder: (context, control, child) => Text(control.isNull
-                    ? 'Progress not set'
-                    : 'Progress set to ${control.value.toStringAsFixed(2)}%'),
+                builder: (context, control, child) =>
+                    Text(control.isNull ? 'Progress not set' : 'Progress set to ${control.value.toStringAsFixed(2)}%'),
               ),
               ReactiveSlider(
                 formControlName: 'progress',
@@ -137,8 +131,7 @@ class ComplexSample extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 showErrors: (control) => control.invalid,
                 validationMessages: (control) => {
-                  ValidationMessage.min:
-                      'A value lower than 50.00 is not accepted',
+                  ValidationMessage.min: 'A value lower than 50.00 is not accepted',
                 },
               ),
               const SizedBox(height: 24.0),
@@ -191,8 +184,7 @@ const inUseEmails = ['johndoe@email.com', 'john@email.com'];
 
 /// Async validator example that simulates a request to a server
 /// to validate if the email of the user is unique.
-Future<Map<String, dynamic>> _uniqueEmail(
-    AbstractControl<dynamic> control) async {
+Future<Map<String, dynamic>> _uniqueEmail(AbstractControl<dynamic> control) async {
   final error = {'unique': false};
 
   final emailAlreadyInUse = await Future.delayed(

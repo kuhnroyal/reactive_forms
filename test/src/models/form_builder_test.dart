@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 void main() {
   group('Form Builder', () {
@@ -11,11 +11,8 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form is FormGroup, true,
-          reason: 'form is not instance of FormGroup');
-      expect(form.control('name') is FormControl<String>, true,
-          reason:
-              '${form.control('name').runtimeType} is not instance of FormControl<String>');
+      expect(form is FormGroup, true, reason: 'form is not instance of FormGroup');
+      expect(form.control('name') is FormControl<String>, true, reason: '${form.control('name').runtimeType} is not instance of FormControl<String>');
     });
 
     test('Build a group with int control', () {
@@ -25,9 +22,7 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('age') is FormControl<int>, true,
-          reason:
-              '${form.control('age').runtimeType} is not instance of FormControl<int>');
+      expect(form.control('age') is FormControl<int>, true, reason: '${form.control('age').runtimeType} is not instance of FormControl<int>');
     });
 
     test('Build a group with bool control', () {
@@ -38,8 +33,7 @@ void main() {
 
       // Expect a form group created
       expect(form.control('checked') is FormControl<bool>, true,
-          reason:
-              '${form.control('checked').runtimeType} is not instance of FormControl<bool>');
+          reason: '${form.control('checked').runtimeType} is not instance of FormControl<bool>');
     });
 
     test('Build a group with double control', () {
@@ -50,8 +44,7 @@ void main() {
 
       // Expect a form group created
       expect(form.control('value') is FormControl<double>, true,
-          reason:
-              '${form.control('value').runtimeType} is not instance of FormControl<double>');
+          reason: '${form.control('value').runtimeType} is not instance of FormControl<double>');
     });
 
     test('Build a group with datetime control', () {
@@ -62,8 +55,7 @@ void main() {
 
       // Expect a form group created
       expect(form.control('value') is FormControl<DateTime>, true,
-          reason:
-              '${form.control('value').runtimeType} is not instance of FormControl<DateTime>');
+          reason: '${form.control('value').runtimeType} is not instance of FormControl<DateTime>');
     });
 
     test('Build a group with TimeOfDay control', () {
@@ -74,8 +66,7 @@ void main() {
 
       // Expect a form group created
       expect(form.control('value') is FormControl<TimeOfDay>, true,
-          reason:
-              '${form.control('value').runtimeType} is not instance of FormControl<TimeOfDay>');
+          reason: '${form.control('value').runtimeType} is not instance of FormControl<TimeOfDay>');
     });
 
     test('Build a group with dynamic control', () {
@@ -86,8 +77,7 @@ void main() {
 
       // Expect a form group created
       expect(form.control('instance') is FormControl<dynamic>, true,
-          reason:
-              '${form.control('instance').runtimeType} is not instance of FormControl<dynamic>');
+          reason: '${form.control('instance').runtimeType} is not instance of FormControl<dynamic>');
     });
 
     test('Build a group with form control', () {
@@ -97,8 +87,7 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('control') is FormControl<String>, true,
-          reason: 'control is not instance of FormControl<String>');
+      expect(form.control('control') is FormControl<String>, true, reason: 'control is not instance of FormControl<String>');
     });
 
     test('Build a group with single validator', () {
@@ -109,10 +98,8 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('control') is FormControl<Object>, true,
-          reason: 'control is not instance of FormControl<dynamic>');
-      expect(form.control('control').validators.first, validator,
-          reason: 'validator not set');
+      expect(form.control('control') is FormControl<Object>, true, reason: 'control is not instance of FormControl<dynamic>');
+      expect(form.control('control').validators.first, validator, reason: 'validator not set');
     });
 
     test('Build a group with multiple validators', () {
@@ -125,14 +112,10 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('control') is FormControl<dynamic>, true,
-          reason: 'control is not instance of FormControl<dynamic>');
-      expect(form.control('control').validators.length, 2,
-          reason: 'not set validators');
-      expect(form.control('control').validators[0], requiredValidator,
-          reason: 'not set required validator');
-      expect(form.control('control').validators[1], emailValidator,
-          reason: 'not set email validator');
+      expect(form.control('control') is FormControl<dynamic>, true, reason: 'control is not instance of FormControl<dynamic>');
+      expect(form.control('control').validators.length, 2, reason: 'not set validators');
+      expect(form.control('control').validators[0], requiredValidator, reason: 'not set required validator');
+      expect(form.control('control').validators[1], emailValidator, reason: 'not set email validator');
     });
 
     test('Build a group with multiple validators and implicit type', () {
@@ -145,16 +128,11 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('control') is FormControl<String>, true,
-          reason: 'control is not instance of FormControl<String>');
-      expect(form.control('control').value, '',
-          reason: 'control value is not set');
-      expect(form.control('control').validators.length, 2,
-          reason: 'not set validators');
-      expect(form.control('control').validators[0], requiredValidator,
-          reason: 'not set required validator');
-      expect(form.control('control').validators[1], emailValidator,
-          reason: 'not set email validator');
+      expect(form.control('control') is FormControl<String>, true, reason: 'control is not instance of FormControl<String>');
+      expect(form.control('control').value, '', reason: 'control value is not set');
+      expect(form.control('control').validators.length, 2, reason: 'not set validators');
+      expect(form.control('control').validators[0], requiredValidator, reason: 'not set required validator');
+      expect(form.control('control').validators[1], emailValidator, reason: 'not set email validator');
     });
 
     test('Build a group with default value and validator', () {
@@ -165,12 +143,9 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('control') is FormControl<String>, true,
-          reason: 'control is not instance of FormControl<String>');
-      expect(form.control('control').value, '',
-          reason: 'control default value not set');
-      expect(form.control('control').validators[0], requiredValidator,
-          reason: 'not set required validator');
+      expect(form.control('control') is FormControl<String>, true, reason: 'control is not instance of FormControl<String>');
+      expect(form.control('control').value, '', reason: 'control default value not set');
+      expect(form.control('control').validators[0], requiredValidator, reason: 'not set required validator');
     });
 
     test('Build a group with default value in null and validator', () {
@@ -182,12 +157,9 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('control') is FormControl<dynamic>, true,
-          reason: 'control is not instance of FormControl<dynamic>');
-      expect(form.control('control').value, null,
-          reason: 'control default value not set to null');
-      expect(form.control('control').validators[0], requiredValidator,
-          reason: 'not set required validator');
+      expect(form.control('control') is FormControl<dynamic>, true, reason: 'control is not instance of FormControl<dynamic>');
+      expect(form.control('control').value, null, reason: 'control default value not set to null');
+      expect(form.control('control').validators[0], requiredValidator, reason: 'not set required validator');
     });
 
     test('Build a group with empty array', () {
@@ -197,8 +169,7 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('control') is FormControl<dynamic>, true,
-          reason: 'control is not instance of FormControl<dynamic>');
+      expect(form.control('control') is FormControl<dynamic>, true, reason: 'control is not instance of FormControl<dynamic>');
     });
 
     test('Build a group with default value as array', () {
@@ -208,10 +179,8 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('control') is FormControl<String>, true,
-          reason: 'control is not instance of FormControl<String>');
-      expect(form.control('control').value, '',
-          reason: 'control default value not set');
+      expect(form.control('control') is FormControl<String>, true, reason: 'control is not instance of FormControl<String>');
+      expect(form.control('control').value, '', reason: 'control default value not set');
     });
 
     test('Build a group with invalid configuration throws exception', () {
@@ -221,20 +190,17 @@ void main() {
           });
 
       // Expect an exception
-      expect(createGroup,
-          throwsA(isInstanceOf<FormBuilderInvalidInitializationException>()));
+      expect(createGroup, throwsA(isInstanceOf<FormBuilderInvalidInitializationException>()));
     });
 
-    test('Build a group with invalid validators configuration throws exception',
-        () {
+    test('Build a group with invalid validators configuration throws exception', () {
       // Given: a form group builder creation
       final createGroup = () => fb.group({
             'control': ['', Validators.required, ''],
           });
 
       // Expect an exception
-      expect(createGroup,
-          throwsA(isInstanceOf<FormBuilderInvalidInitializationException>()));
+      expect(createGroup, throwsA(isInstanceOf<FormBuilderInvalidInitializationException>()));
     });
 
     test('Build a group with default bool value as array', () {
@@ -244,10 +210,8 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('control') is FormControl<bool>, true,
-          reason: 'control is not instance of FormControl<bool>');
-      expect(form.control('control').value, true,
-          reason: 'control default value not set');
+      expect(form.control('control') is FormControl<bool>, true, reason: 'control is not instance of FormControl<bool>');
+      expect(form.control('control').value, true, reason: 'control default value not set');
     });
 
     test('Build a group with default int value as array', () {
@@ -257,10 +221,8 @@ void main() {
       });
 
       // Expect a form group created
-      expect(form.control('control') is FormControl<int>, true,
-          reason: 'control is not instance of FormControl<int>');
-      expect(form.control('control').value, 50,
-          reason: 'control default value not set');
+      expect(form.control('control') is FormControl<int>, true, reason: 'control is not instance of FormControl<int>');
+      expect(form.control('control').value, 50, reason: 'control default value not set');
     });
 
     test('Build a group with default double value as array', () {
@@ -271,10 +233,8 @@ void main() {
 
       // Expect a form group created
       expect(form.control('control') is FormControl<double>, true,
-          reason:
-              '${form.control('control').runtimeType} is not instance of FormControl<double>');
-      expect(form.control('control').value, 50.0,
-          reason: 'control default value not set');
+          reason: '${form.control('control').runtimeType} is not instance of FormControl<double>');
+      expect(form.control('control').value, 50.0, reason: 'control default value not set');
     });
 
     test('Build a group with default datetime value as array', () {
@@ -286,10 +246,8 @@ void main() {
 
       // Expect a form group created
       expect(form.control('control') is FormControl<DateTime>, true,
-          reason:
-              '${form.control('control').runtimeType} is not instance of FormControl<DateTime>');
-      expect(form.control('control').value, value,
-          reason: 'control default value not set');
+          reason: '${form.control('control').runtimeType} is not instance of FormControl<DateTime>');
+      expect(form.control('control').value, value, reason: 'control default value not set');
     });
 
     test('Build a group with default TimeOfDay value as array', () {
@@ -301,10 +259,8 @@ void main() {
 
       // Expect a form group created
       expect(form.control('control') is FormControl<TimeOfDay>, true,
-          reason:
-              '${form.control('control').runtimeType} is not instance of FormControl<TimeOfDay>');
-      expect(form.control('control').value, value,
-          reason: 'control default value not set');
+          reason: '${form.control('control').runtimeType} is not instance of FormControl<TimeOfDay>');
+      expect(form.control('control').value, value, reason: 'control default value not set');
     });
 
     test('Build a state with ', () {
@@ -312,8 +268,7 @@ void main() {
       final state = fb.state(value: 'name', disabled: true);
 
       // Expect the state is created
-      expect(state is ControlState<String>, true,
-          reason: 'state is not instance of ControlState<String>');
+      expect(state is ControlState<String>, true, reason: 'state is not instance of ControlState<String>');
       expect(state.value, 'name', reason: 'state value not set');
       expect(state.disabled, true, reason: 'state disabled not set');
     });
@@ -323,8 +278,7 @@ void main() {
       final array = fb.array<String>(['john', 'little john']);
 
       // Expect: the array is created
-      expect(array is FormArray, true,
-          reason: '${array.runtimeType} is not instance of FormArray<String>');
+      expect(array is FormArray, true, reason: '${array.runtimeType} is not instance of FormArray<String>');
       expect(array.control('0').value, 'john');
       expect(array.value, ['john', 'little john']);
     });
@@ -334,9 +288,7 @@ void main() {
       final control = fb.control('john');
 
       // Expect: the array is created
-      expect(control is FormControl<String>, true,
-          reason:
-              '${control.runtimeType} is not instance of FormControl<String>');
+      expect(control is FormControl<String>, true, reason: '${control.runtimeType} is not instance of FormControl<String>');
       expect(control.value, 'john');
     });
 
@@ -418,8 +370,7 @@ void main() {
 
       // Expect: array is created
       expect(addressArray.controls.length, 2);
-      expect(addressArray.control('0') is FormGroup, true,
-          reason: 'first item is not a group');
+      expect(addressArray.control('0') is FormGroup, true, reason: 'first item is not a group');
       expect(addressArray.control('0').value, {'city': 'Sofia'});
     });
   });

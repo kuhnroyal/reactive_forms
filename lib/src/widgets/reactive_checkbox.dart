@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// This is a convenience widget that wraps a [Checkbox] widget in a
 /// [ReactiveCheckbox].
@@ -64,6 +64,5 @@ class ReactiveCheckbox extends ReactiveFormField<bool, bool> {
         );
 
   @override
-  ReactiveFormFieldState<bool, bool> createState() =>
-      ReactiveFormFieldState<bool, bool>();
+  ReactiveFormFieldState<bool, bool> createState() => ReactiveFormFieldState<bool, bool>();
 }

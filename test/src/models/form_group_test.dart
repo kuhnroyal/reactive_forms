@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 void main() {
   group('Form Group', () {
@@ -100,8 +100,7 @@ void main() {
 
       expect(form.errors.keys.length, 1);
       expect(form.errors['name'] != null, true, reason: 'Name');
-      expect(form.hasError(ValidationMessage.minLength, 'name'), true,
-          reason: 'name.minLength');
+      expect(form.hasError(ValidationMessage.minLength, 'name'), true, reason: 'name.minLength');
     });
 
     test('Reset group restores value of all controls to null', () {
@@ -148,15 +147,13 @@ void main() {
     test('Throws FormControlNotFoundException if invalid control name', () {
       final form = FormGroup({});
 
-      expect(() => form.control('does not exist'),
-          throwsA(isInstanceOf<FormControlNotFoundException>()));
+      expect(() => form.control('does not exist'), throwsA(isInstanceOf<FormControlNotFoundException>()));
     });
 
     test('Throws FormControlNotFoundException if not control found', () {
       final form = FormGroup({'someControl': FormControl<String>()});
 
-      expect(() => form.control('does not exist'),
-          throwsA(isInstanceOf<FormControlNotFoundException>()));
+      expect(() => form.control('does not exist'), throwsA(isInstanceOf<FormControlNotFoundException>()));
     });
 
     test('Mark form as touched mark all controls in the form as touched', () {
@@ -305,8 +302,7 @@ void main() {
       // Given: a form with an invalid disable control
       final form = FormGroup({
         'name': FormControl<String>(value: 'Reactive'),
-        'email': FormControl<String>(
-            disabled: true, validators: [Validators.required]),
+        'email': FormControl<String>(disabled: true, validators: [Validators.required]),
       });
 
       // Expect: form is valid
@@ -333,8 +329,7 @@ void main() {
       // Given: a form with a invalid disable control
       final form = FormGroup({
         'name': FormControl<String>(value: 'Reactive'),
-        'email': FormControl<String>(
-            disabled: true, validators: [Validators.required]),
+        'email': FormControl<String>(disabled: true, validators: [Validators.required]),
       });
 
       // When: enable invalid control
@@ -491,8 +486,7 @@ void main() {
       final city = form.control('address.city');
 
       // Then: control is not null
-      expect(city is FormControl<String>, true,
-          reason: '$city is not a control');
+      expect(city is FormControl<String>, true, reason: '$city is not a control');
       expect(city.value, 'Sofia', reason: 'control without correct value');
     });
 
@@ -511,8 +505,7 @@ void main() {
       final city = form.control('address.0.city');
 
       // Then: control is not null
-      expect(city is FormControl<String>, true,
-          reason: '$city is not a control');
+      expect(city is FormControl<String>, true, reason: '$city is not a control');
       expect(city.value, 'Sofia', reason: 'control without correct value');
     });
 
@@ -526,8 +519,7 @@ void main() {
       form.focus('email');
 
       // Then: none control has focus
-      expect((form.control('name') as FormControl).hasFocus, false,
-          reason: 'control has focus');
+      expect((form.control('name') as FormControl).hasFocus, false, reason: 'control has focus');
     });
 
     test('Focused a control', () {
@@ -540,8 +532,7 @@ void main() {
       form.focus('name');
 
       // Then: control is focused
-      expect((form.control('name') as FormControl).hasFocus, true,
-          reason: 'control is not focused');
+      expect((form.control('name') as FormControl).hasFocus, true, reason: 'control is not focused');
     });
 
     test('Focused a nested control', () {
@@ -556,8 +547,7 @@ void main() {
       form.focus('person.name');
 
       // Then: control is focused
-      expect((form.control('person.name') as FormControl).hasFocus, true,
-          reason: 'control is not focused');
+      expect((form.control('person.name') as FormControl).hasFocus, true, reason: 'control is not focused');
     });
 
     test('Remove Focus to all control', () {
@@ -575,10 +565,8 @@ void main() {
       form.unfocus();
 
       // Then: any control has focus
-      expect((form.control('name') as FormControl).hasFocus, false,
-          reason: 'control is focused');
-      expect((form.control('email') as FormControl).hasFocus, false,
-          reason: 'control is focused');
+      expect((form.control('name') as FormControl).hasFocus, false, reason: 'control is focused');
+      expect((form.control('email') as FormControl).hasFocus, false, reason: 'control is focused');
     });
 
     test('Add controls to the FormGroup', () {
@@ -651,8 +639,7 @@ void main() {
       form.control('name').markAsPristine();
 
       // Then: control and form are pristine
-      expect(form.control('name').pristine, true,
-          reason: 'control is not pristine');
+      expect(form.control('name').pristine, true, reason: 'control is not pristine');
       expect(form.pristine, true, reason: 'form is not pristine');
     });
 
@@ -685,10 +672,8 @@ void main() {
       form.focus();
 
       // Then: first control gets focus
-      expect((form.control('name') as FormControl).hasFocus, true,
-          reason: 'first control does not have focus');
-      expect((form.control('email') as FormControl).hasFocus, false,
-          reason: 'other controls have focus');
+      expect((form.control('name') as FormControl).hasFocus, true, reason: 'first control does not have focus');
+      expect((form.control('email') as FormControl).hasFocus, false, reason: 'other controls have focus');
     });
 
     test('Reports error on deep control path', () {
@@ -722,8 +707,7 @@ void main() {
       expect(form.control('email').enabled, false, reason: 'email is enabled');
     });
 
-    test('Initialized disabled form changes to enable when enable children',
-        () {
+    test('Initialized disabled form changes to enable when enable children', () {
       // Given: a disabled form
       final form = FormGroup({
         'name': FormControl<String>(),
@@ -754,8 +738,7 @@ void main() {
       });
 
       // Then: form value is patched
-      expect(form.value, {'name': name, 'email': email},
-          reason: 'form value not patched');
+      expect(form.value, {'name': name, 'email': email}, reason: 'form value not patched');
     });
 
     test('Patch nested form group value', () {

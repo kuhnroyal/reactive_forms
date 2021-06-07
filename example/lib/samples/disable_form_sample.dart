@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reactive_forms_example/sample_screen.dart';
+import 'package:sk_reactive_forms_example/sample_screen.dart';
 
 class DisableFormSample extends StatefulWidget {
   @override

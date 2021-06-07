@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' hide ProgressIndicator;
 import 'package:intl/intl.dart';
-import 'package:reactive_forms/reactive_forms.dart';
-import 'package:reactive_forms_example/sample_screen.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms_example/sample_screen.dart';
 
 class DatePickerSample extends StatefulWidget {
   @override

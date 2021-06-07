@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// Signature for callbacks that are used to get
 /// the label of the [ReactiveSlider].
@@ -63,9 +63,7 @@ class ReactiveSlider extends ReactiveFormField<double, double> {
               min: min,
               max: max,
               divisions: divisions,
-              label: labelBuilder != null
-                  ? labelBuilder(field.value ?? min)
-                  : null,
+              label: labelBuilder != null ? labelBuilder(field.value ?? min) : null,
               activeColor: activeColor,
               inactiveColor: inactiveColor,
               semanticFormatterCallback: semanticFormatterCallback,
@@ -76,6 +74,5 @@ class ReactiveSlider extends ReactiveFormField<double, double> {
         );
 
   @override
-  ReactiveFormFieldState<double, double> createState() =>
-      ReactiveFormFieldState<double, double>();
+  ReactiveFormFieldState<double, double> createState() => ReactiveFormFieldState<double, double>();
 }

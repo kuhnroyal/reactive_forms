@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 import 'reactive_dropdown_testing_widget.dart';
 
@@ -23,10 +23,8 @@ void main() {
         );
 
         // When: gets dropdown
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
 
         // Expect: dropdown value is null
         expect(dropdown.value, null);
@@ -48,10 +46,8 @@ void main() {
         ));
 
         // When: gets dropdown
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
 
         // Expect: dropdown value is null
         expect(dropdown.value, 'true');
@@ -73,10 +69,8 @@ void main() {
         ));
 
         // When: gets dropdown
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
 
         // Expect: dropdown value is null
         expect(dropdown.value, 'false');
@@ -102,10 +96,8 @@ void main() {
         await tester.pump();
 
         // Then: dropdown value is equals to control
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
 
         expect(dropdown.value, form.control('dropdown').value);
       },
@@ -130,10 +122,8 @@ void main() {
         await tester.pump();
 
         // Then: dropdown value is equals to control
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
 
         expect(dropdown.value, form.control('dropdown').value);
       },
@@ -154,10 +144,8 @@ void main() {
         ));
 
         // Then: the dropdown is disabled
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
         expect(dropdown.onChanged, null);
       },
     );
@@ -178,10 +166,8 @@ void main() {
         ));
 
         // Then: the dropdown is disabled
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
         expect(dropdown.onChanged, null);
       },
     );
@@ -204,10 +190,8 @@ void main() {
         ));
 
         // Then: the dropdown is disabled
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
         expect(dropdown.disabledHint, disabledHint);
       },
     );
@@ -231,10 +215,8 @@ void main() {
         await tester.pump();
 
         // Then: the dropdown is disabled
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
         expect(dropdown.onChanged, null);
       },
     );
@@ -258,10 +240,8 @@ void main() {
         await tester.pump();
 
         // Then: the dropdown is enable
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
         expect(dropdown.onChanged != null, true);
       },
     );
@@ -289,10 +269,8 @@ void main() {
         ));
 
         // When: callback on changed in widget
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
         dropdown.onChanged!('true');
         await tester.pump();
 
@@ -326,10 +304,8 @@ void main() {
 
         // Then: dropdown disabledHint value is equals to selectedItemBuilder
         // equivalent item
-        final dropdownType =
-            DropdownButton<String>(items: null, onChanged: null).runtimeType;
-        final dropdown = tester
-            .firstWidget<DropdownButton<String>>(find.byType(dropdownType));
+        final dropdownType = DropdownButton<String>(items: null, onChanged: null).runtimeType;
+        final dropdown = tester.firstWidget<DropdownButton<String>>(find.byType(dropdownType));
 
         // Then: callback is called
         expect(dropdown.disabledHint, selectedItemBuilderList.elementAt(0));

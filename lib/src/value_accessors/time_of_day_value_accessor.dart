@@ -3,16 +3,14 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// Represents a control value accessor that convert between data types
 /// [TimeOfDay] and [String].
 class TimeOfDayValueAccessor extends ControlValueAccessor<TimeOfDay, String> {
   @override
   String modelToViewValue(TimeOfDay? modelValue) {
-    return modelValue == null
-        ? ''
-        : '${modelValue.hour}:${_addLeadingZeroIfNeeded(modelValue.minute)}';
+    return modelValue == null ? '' : '${modelValue.hour}:${_addLeadingZeroIfNeeded(modelValue.minute)}';
   }
 
   @override
@@ -32,6 +30,5 @@ class TimeOfDayValueAccessor extends ControlValueAccessor<TimeOfDay, String> {
     );
   }
 
-  String _addLeadingZeroIfNeeded(int value) =>
-      (value < 10) ? '0$value' : value.toString();
+  String _addLeadingZeroIfNeeded(int value) => (value < 10) ? '0$value' : value.toString();
 }

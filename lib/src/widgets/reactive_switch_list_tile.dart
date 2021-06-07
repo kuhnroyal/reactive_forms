@@ -3,7 +3,7 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:reactive_forms/reactive_forms.dart';
+import 'package:sk_reactive_forms/reactive_forms.dart';
 
 /// This is a convenience widget that wraps a [SwitchListTile] widget in a
 /// [ReactiveSwitchListTile].
@@ -65,6 +65,5 @@ class ReactiveSwitchListTile extends ReactiveFormField<bool, bool> {
         );
 
   @override
-  ReactiveFormFieldState<bool, bool> createState() =>
-      ReactiveFormFieldState<bool, bool>();
+  ReactiveFormFieldState<bool, bool> createState() => ReactiveFormFieldState<bool, bool>();
 }
