@@ -2594,6 +2594,12 @@ class FormGroupArray<F extends FormGroup> extends AbstractControl<List<Map<Strin
       }
     }
 
+    if (value != null && value.length < _controls.length) {
+      for (var i = _controls.length; i > value.length; i--) {
+        removeAt(i - 1, updateParent: false, emitEvent: emitEvent);
+      }
+    }
+
     if (value != null && value.length > _controls.length) {
       final newControls =
           value.toList().asMap().entries.where((entry) => entry.key >= _controls.length).map((entry) => subFormBuilder(entry.value)).toList();
